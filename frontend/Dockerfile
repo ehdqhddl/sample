@@ -10,6 +10,7 @@ RUN npm run build
 FROM nginx:alpine
 COPY --from=build /app/dist /usr/share/nginx/html
 COPY nginx.conf /etc/nginx/conf.d/default.conf.template
-EXPOSE 80
+EXPOSE 8080
+ENV PORT=8080
 ENV BACKEND_URL=http://localhost:8080
-CMD ["/bin/sh", "-c", "sed \"s|BACKEND_URL_PLACEHOLDER|${BACKEND_URL}|g\" /etc/nginx/conf.d/default.conf.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"]
+CMD ["/bin/sh", "-c", "sed \"s|BACKEND_URL_PLACEHOLDER|${BACKEND_URL}|g; s|PORT_PLACEHOLDER|${PORT}|g\" /etc/nginx/conf.d/default.conf.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"]
