@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply font-sans text-gray-900 bg-white;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3 {
+    @apply font-serif;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-6 py-3 bg-gold-600 text-white font-medium
+           hover:bg-gold-700 transition-colors duration-200 rounded-none;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center gap-2 px-6 py-3 border border-gold-600 text-gold-600
+           hover:bg-gold-600 hover:text-white transition-colors duration-200;
+  }
+
+  .section-title {
+    @apply text-3xl md:text-4xl font-serif text-building-dark mb-4;
+  }
+
+  .section-subtitle {
+    @apply text-base text-gray-500 mb-12;
+  }
+
+  .gold-divider {
+    @apply w-16 h-0.5 bg-gold-500 mx-auto my-6;
+  }
+
+  .page-hero {
+    @apply relative h-[50vh] md:h-[60vh] flex items-center justify-center overflow-hidden;
+  }
+
+  .card-hover {
+    @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-xl;
+  }
+
+  .admin-sidebar-link {
+    @apply flex items-center gap-3 px-4 py-3 text-gray-600 hover:bg-gold-50 hover:text-gold-700
+           rounded-lg transition-colors duration-150;
+  }
+
+  .admin-sidebar-link.active {
+    @apply bg-gold-50 text-gold-700 font-medium;
+  }
+}
+
+@layer utilities {
+  .text-gradient-gold {
+    background: linear-gradient(135deg, #C9A84C 0%, #F5D170 50%, #C9A84C 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #f1f1f1; }
+::-webkit-scrollbar-thumb { background: #C9A84C; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #B8902A; }

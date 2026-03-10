@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+  <defs>
+    <linearGradient id="window" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0a1628"/>
+      <stop offset="60%" stop-color="#1a2a4a"/>
+      <stop offset="100%" stop-color="#0d3b6e"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="#12100e"/>
+  <!-- Large window view -->
+  <rect x="50" y="30" width="700" height="350" rx="4" fill="url(#window)"/>
+  <!-- Night city lights -->
+  <g fill="#C9A84C" opacity="0.7">
+    <rect x="80" y="200" width="4" height="160"/><rect x="100" y="180" width="4" height="180"/>
+    <rect x="130" y="160" width="6" height="200"/><rect x="160" y="190" width="4" height="170"/>
+    <rect x="190" y="170" width="5" height="190"/><rect x="220" y="200" width="4" height="160"/>
+    <rect x="580" y="160" width="6" height="200"/><rect x="610" y="190" width="4" height="170"/>
+    <rect x="640" y="175" width="5" height="185"/><rect x="670" y="200" width="4" height="160"/>
+    <rect x="700" y="185" width="4" height="175"/>
+  </g>
+  <!-- Window lights scattered -->
+  <g fill="#F5D170" opacity="0.5">
+    <rect x="82" y="205" width="2" height="3"/><rect x="82" y="212" width="2" height="3"/>
+    <rect x="102" y="185" width="2" height="3"/><rect x="102" y="195" width="2" height="3"/>
+    <rect x="132" y="165" width="3" height="3"/><rect x="132" y="175" width="3" height="3"/>
+    <rect x="583" y="165" width="3" height="3"/><rect x="583" y="175" width="3" height="3"/>
+    <rect x="613" y="195" width="2" height="3"/><rect x="673" y="205" width="2" height="3"/>
+  </g>
+  <!-- Han River -->
+  <rect x="50" y="300" width="700" height="80" fill="#1a3a5c" opacity="0.8"/>
+  <!-- River reflections -->
+  <g opacity="0.3">
+    <ellipse cx="200" cy="330" rx="20" ry="5" fill="#C9A84C"/>
+    <ellipse cx="400" cy="340" rx="30" ry="6" fill="#C9A84C"/>
+    <ellipse cx="600" cy="325" rx="25" ry="5" fill="#C9A84C"/>
+  </g>
+  <!-- Bridge -->
+  <line x1="50" y1="308" x2="750" y2="308" stroke="#C9A84C" stroke-width="2" opacity="0.4"/>
+  <!-- Dining table in foreground -->
+  <ellipse cx="400" cy="460" rx="150" ry="25" fill="#2a1a0e"/>
+  <ellipse cx="400" cy="455" rx="140" ry="22" fill="#3a2a1e"/>
+  <!-- Candle -->
+  <rect x="395" y="430" width="10" height="20" fill="#fffde7"/>
+  <ellipse cx="400" cy="428" rx="6" ry="8" fill="#FF8C00" opacity="0.8"/>
+  <!-- Wine glasses silhouette -->
+  <g fill="#2a1a0e" opacity="0.8">
+    <path d="M340,430 Q345,445 350,450 L360,450 Q365,445 370,430 Z"/>
+    <rect x="352" y="450" width="6" height="15"/>
+    <rect x="347" y="462" width="16" height="3"/>
+    <path d="M440,430 Q445,445 450,450 L460,450 Q465,445 470,430 Z"/>
+    <rect x="452" y="450" width="6" height="15"/>
+    <rect x="447" y="462" width="16" height="3"/>
+  </g>
+  <text x="400" y="500" font-family="Arial" font-size="14" fill="#C9A84C" text-anchor="middle">57F-59F THE SKY RESTAURANT</text>
+</svg>

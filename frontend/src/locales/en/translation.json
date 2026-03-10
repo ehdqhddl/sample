@@ -1,0 +1,200 @@
+{
+  "nav": {
+    "story": "Story",
+    "gfConcept": "GF Concept",
+    "floorMap": "Floor Map",
+    "zoneGuide": "Zone Guide",
+    "observatory": "Observatory",
+    "pompidou": "Pompidou",
+    "buffet": "Buffet",
+    "restaurant": "Restaurant",
+    "news": "News",
+    "admin": "Admin"
+  },
+  "home": {
+    "hero": {
+      "tagline": "Seoul's Reborn Landmark",
+      "title": "63 BUILDING",
+      "subtitle": "Meet Seoul from the golden heart of 63 floors",
+      "cta": "Explore",
+      "scrollDown": "Scroll Down"
+    },
+    "intro": {
+      "title": "The New Beginning of 63",
+      "desc": "63 Building, a symbol of Seoul since its completion in 1985, has been completely reborn. We welcome you as a premium complex cultural space combining observatory, art gallery, dining, and retail."
+    },
+    "highlights": {
+      "observatory": { "title": "Observatory", "desc": "Seoul 360° Panorama" },
+      "pompidou": { "title": "Pompidou×63", "desc": "World-class Art Exhibition" },
+      "buffet": { "title": "Signature Buffet", "desc": "Ultimate Dining Experience" },
+      "restaurant": { "title": "Sky Dining", "desc": "57-59F Fine Dining" }
+    },
+    "news": {
+      "title": "Latest News",
+      "more": "More"
+    }
+  },
+  "story": {
+    "hero": {
+      "title": "63 Building Story",
+      "subtitle": "40 Years of History, A New Beginning"
+    },
+    "history": {
+      "title": "History",
+      "1985": { "year": "1985", "title": "Opening", "desc": "Completed as Korea's first skyscraper. The golden 63-story, 249m building transformed Seoul's skyline." },
+      "1990": { "year": "1990s", "title": "Growth", "desc": "Developed into a complex cultural space with an observatory, aquarium, and shopping mall, becoming Seoul's iconic destination." },
+      "2020": { "year": "2020s", "title": "Renewal", "desc": "Major renovation updated F&B, retail, and cultural facilities. A world-class art space was born through collaboration with the Pompidou Center." },
+      "2024": { "year": "2024", "title": "Rebirth", "desc": "63 Building is reborn in a new form. Honoring 40 years of history while beginning a new journey toward the future." }
+    },
+    "brand": {
+      "title": "Brand Philosophy",
+      "desc": "63 Building is more than just a building. It is a space that holds the dreams and aspirations of Seoul citizens, the pride of Korea reaching out to the world, and a complex cultural space that offers special moments to everyone."
+    }
+  },
+  "gfConcept": {
+    "hero": {
+      "title": "GF Design Concept",
+      "subtitle": "Harmony of Gold and Light"
+    },
+    "concept": {
+      "title": "The New Ground Floor",
+      "desc": "63 Building's ground floor has been reborn with the concept of a 'Golden Forest.' The interior design, inspired by the building's golden exterior, guides visitors into a special world away from the everyday."
+    },
+    "elements": {
+      "title": "Design Elements",
+      "light": { "title": "Light & Gold", "desc": "The golden glow, the symbol of 63 Building, is woven throughout the interior space." },
+      "nature": { "title": "Nature & City", "desc": "The elements of water, wind, and light are incorporated into the space design, reflecting the geographical characteristics of its Han River location." },
+      "heritage": { "title": "Heritage & Present", "desc": "The identity of a 40-year-old building is respected and reinterpreted with a modern sensibility." }
+    }
+  },
+  "floorMap": {
+    "hero": {
+      "title": "Floor Guide",
+      "subtitle": "63 Building Floor-by-Floor Guide"
+    },
+    "title": "Floor Guide",
+    "selectFloor": "Select a Floor",
+    "facilities": "Facilities",
+    "stores": "Stores"
+  },
+  "zoneGuide": {
+    "hero": {
+      "title": "Zone Guide",
+      "subtitle": "Find Your Space"
+    },
+    "zones": {
+      "all": "All",
+      "FNB": "F&B",
+      "RETAIL": "Retail",
+      "AMENITY": "Amenity",
+      "CULTURE": "Culture",
+      "SERVICE": "Service"
+    },
+    "floor": "Floor",
+    "hours": "Hours",
+    "phone": "Phone"
+  },
+  "observatory": {
+    "hero": {
+      "title": "Observatory",
+      "subtitle": "See Seoul at a Glance"
+    },
+    "info": {
+      "title": "Seoul from the Sky",
+      "desc": "Seoul's 360° panorama unfolds at the 60th floor, 249m high. On a clear day, you can take in all of Seoul from Bukhansan to Gwanaksan, along the Han River.",
+      "floor": "60F",
+      "height": "249m",
+      "hours": "10:00 - 22:00",
+      "ticket": "Book Tickets"
+    },
+    "features": {
+      "view360": { "title": "360° Panorama", "desc": "View all of Seoul at once" },
+      "night": { "title": "Night Program", "desc": "Special Fri & Sat night hours" },
+      "photo": { "title": "Photo Zone", "desc": "Special space for memorable photos" }
+    }
+  },
+  "pompidou": {
+    "hero": {
+      "title": "Pompidou×63",
+      "subtitle": "World's Best Contemporary Art"
+    },
+    "info": {
+      "title": "Paris Comes to Seoul",
+      "desc": "A new cultural space born through collaboration with the Centre Pompidou in Paris. Experience world-class contemporary art in Seoul.",
+      "floor": "2F-3F",
+      "hours": "10:00 - 21:00 (Closed Mondays)",
+      "ticket": "Book Tickets"
+    }
+  },
+  "buffet": {
+    "hero": {
+      "title": "Signature Buffet",
+      "subtitle": "Ultimate Dining Experience"
+    },
+    "info": {
+      "title": "63 Seafood Buffet",
+      "desc": "A premium buffet where you can enjoy fresh seasonal seafood and a variety of domestic and international dishes. The live cooking stations staffed by chefs provide the ultimate dining experience.",
+      "floor": "B1F",
+      "hours": "11:30 - 21:00",
+      "waiting": "Join Waiting List"
+    }
+  },
+  "restaurant": {
+    "hero": {
+      "title": "Sky Dining",
+      "subtitle": "57-59F Premium Restaurant"
+    },
+    "info": {
+      "title": "A Gastronomic Journey in the Sky",
+      "desc": "Premium restaurants spanning floors 57 to 59. The ultimate dining experience with the Han River as a backdrop. Making your special day even more special.",
+      "floor": "57F-59F",
+      "hours": "11:30 - 22:00",
+      "ticket": "Make a Reservation"
+    }
+  },
+  "news": {
+    "title": "News",
+    "notice": "Notice",
+    "news": "News",
+    "all": "All",
+    "noData": "No news available."
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "more": "More",
+    "close": "Close",
+    "back": "Back",
+    "viewMap": "View Map",
+    "externalLink": "You are leaving to an external site",
+    "floor": "Floor",
+    "hours": "Hours",
+    "phone": "Phone"
+  },
+  "admin": {
+    "title": "Admin",
+    "login": {
+      "title": "Admin Login",
+      "username": "Username",
+      "password": "Password",
+      "submit": "Login",
+      "error": "Invalid username or password"
+    },
+    "dashboard": { "title": "Dashboard", "welcome": "Welcome" },
+    "news": { "title": "News Management", "add": "Add News", "edit": "Edit News", "delete": "Delete", "type": "Type", "published": "Published" },
+    "floorMap": { "title": "Floor Map Management", "add": "Add Floor", "edit": "Edit Floor" },
+    "stores": { "title": "Store Management", "add": "Add Store", "edit": "Edit Store", "zone": "Zone" },
+    "links": { "title": "External Links", "add": "Add Link", "edit": "Edit Link", "type": "Type", "url": "URL" },
+    "save": "Save",
+    "cancel": "Cancel",
+    "deleteConfirm": "Are you sure you want to delete?",
+    "logout": "Logout"
+  },
+  "footer": {
+    "address": "50, 63-ro, Yeongdeungpo-gu, Seoul",
+    "tel": "Tel: 02-789-5663",
+    "copyright": "© 2024 63 Building. All Rights Reserved.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Use"
+  }
+}

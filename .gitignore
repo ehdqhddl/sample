@@ -1,0 +1,25 @@
+# Backend
+backend/build/
+backend/.gradle/
+backend/*.jar
+backend/*.war
+backend/.env
+
+# Frontend
+frontend/node_modules/
+frontend/dist/
+frontend/.env
+frontend/.env.local
+
+# IDE
+.idea/
+.vscode/
+*.iml
+.DS_Store
+
+# Logs
+*.log
+logs/
+
+# Docker
+.docker/

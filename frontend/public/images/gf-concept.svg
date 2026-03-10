@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+  <defs>
+    <linearGradient id="floor" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f5f0e8"/>
+      <stop offset="100%" stop-color="#e8dfc8"/>
+    </linearGradient>
+    <linearGradient id="ceiling" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1a1208"/>
+      <stop offset="100%" stop-color="#2d2010"/>
+    </linearGradient>
+    <radialGradient id="light1" cx="30%" cy="0%" r="50%">
+      <stop offset="0%" stop-color="#C9A84C" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#C9A84C" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="light2" cx="70%" cy="0%" r="50%">
+      <stop offset="0%" stop-color="#C9A84C" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#C9A84C" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="500" fill="#0a0a0a"/>
+  <!-- Floor -->
+  <ellipse cx="400" cy="480" rx="500" ry="80" fill="url(#floor)" opacity="0.6"/>
+  <!-- Ceiling lights glow -->
+  <rect x="0" y="0" width="800" height="200" fill="url(#light1)"/>
+  <rect x="0" y="0" width="800" height="200" fill="url(#light2)"/>
+  <!-- Pillars with gold accents -->
+  <rect x="100" y="50" width="30" height="430" fill="#1a1208"/>
+  <rect x="102" y="50" width="2" height="430" fill="#C9A84C" opacity="0.8"/>
+  <rect x="126" y="50" width="2" height="430" fill="#C9A84C" opacity="0.8"/>
+  <rect x="670" y="50" width="30" height="430" fill="#1a1208"/>
+  <rect x="672" y="50" width="2" height="430" fill="#C9A84C" opacity="0.8"/>
+  <rect x="696" y="50" width="2" height="430" fill="#C9A84C" opacity="0.8"/>
+  <!-- Center installation - golden tree/sculpture -->
+  <g transform="translate(400,450)">
+    <line x1="0" y1="0" x2="-80" y2="-200" stroke="#C9A84C" stroke-width="3" opacity="0.8"/>
+    <line x1="0" y1="0" x2="80" y2="-200" stroke="#C9A84C" stroke-width="3" opacity="0.8"/>
+    <line x1="0" y1="0" x2="-40" y2="-300" stroke="#C9A84C" stroke-width="2" opacity="0.7"/>
+    <line x1="0" y1="0" x2="40" y2="-300" stroke="#C9A84C" stroke-width="2" opacity="0.7"/>
+    <line x1="0" y1="0" x2="0" y2="-380" stroke="#C9A84C" stroke-width="2.5" opacity="0.9"/>
+    <line x1="-80" y1="-200" x2="-120" y2="-280" stroke="#C9A84C" stroke-width="1.5" opacity="0.6"/>
+    <line x1="-80" y1="-200" x2="-40" y2="-260" stroke="#C9A84C" stroke-width="1.5" opacity="0.6"/>
+    <line x1="80" y1="-200" x2="120" y2="-280" stroke="#C9A84C" stroke-width="1.5" opacity="0.6"/>
+    <line x1="80" y1="-200" x2="40" y2="-260" stroke="#C9A84C" stroke-width="1.5" opacity="0.6"/>
+    <!-- Leaf/petal shapes -->
+    <ellipse cx="-80" cy="-200" rx="15" ry="8" fill="#C9A84C" opacity="0.6" transform="rotate(-30,-80,-200)"/>
+    <ellipse cx="80" cy="-200" rx="15" ry="8" fill="#C9A84C" opacity="0.6" transform="rotate(30,80,-200)"/>
+    <ellipse cx="0" cy="-380" rx="12" ry="20" fill="#C9A84C" opacity="0.8"/>
+  </g>
+  <!-- Ambient light spots -->
+  <circle cx="200" cy="30" r="20" fill="#C9A84C" opacity="0.3"/>
+  <circle cx="400" cy="20" r="25" fill="#C9A84C" opacity="0.3"/>
+  <circle cx="600" cy="30" r="20" fill="#C9A84C" opacity="0.3"/>
+  <!-- Gold reflection on floor -->
+  <ellipse cx="400" cy="470" rx="100" ry="20" fill="#C9A84C" opacity="0.15"/>
+  <text x="400" y="498" font-family="Arial" font-size="12" fill="#C9A84C" text-anchor="middle" opacity="0.8">GOLDEN FOREST · GROUND FLOOR DESIGN</text>
+</svg>

@@ -1,0 +1,161 @@
+{
+  "nav": {
+    "story": "63大厦故事",
+    "gfConcept": "GF设计理念",
+    "floorMap": "楼层导览",
+    "zoneGuide": "区域指南",
+    "observatory": "观景台",
+    "pompidou": "蓬皮杜",
+    "buffet": "自助餐",
+    "restaurant": "餐厅",
+    "news": "消息",
+    "admin": "管理员"
+  },
+  "home": {
+    "hero": {
+      "tagline": "首尔重生的地标",
+      "title": "63大厦",
+      "subtitle": "在63层的金色心脏里感受首尔",
+      "cta": "探索",
+      "scrollDown": "向下滚动"
+    },
+    "intro": {
+      "title": "63的全新开始",
+      "desc": "自1985年竣工以来一直是首尔象征的63大厦焕然一新。集观景台、美术馆、餐饮和零售为一体的高端综合文化空间欢迎您的到来。"
+    },
+    "highlights": {
+      "observatory": { "title": "观景台", "desc": "首尔360°全景" },
+      "pompidou": { "title": "蓬皮杜×63", "desc": "世界级艺术展览" },
+      "buffet": { "title": "招牌自助餐", "desc": "极致美食体验" },
+      "restaurant": { "title": "天空餐厅", "desc": "57-59F精致餐厅" }
+    },
+    "news": { "title": "最新消息", "more": "更多" }
+  },
+  "story": {
+    "hero": { "title": "63大厦故事", "subtitle": "40年历史，全新开始" },
+    "history": {
+      "title": "历史",
+      "1985": { "year": "1985年", "title": "开业", "desc": "作为韩国第一座超高层建筑竣工。63层、高249米的金色建筑改变了首尔的天际线。" },
+      "1990": { "year": "1990年代", "title": "发展", "desc": "发展为拥有观景台、水族馆和购物中心的综合文化空间，成为首尔的代表性景点。" },
+      "2020": { "year": "2020年代", "title": "翻新", "desc": "通过大规模翻新更新了F&B、零售和文化设施。与蓬皮杜中心合作诞生了世界级艺术空间。" },
+      "2024": { "year": "2024年", "title": "重生", "desc": "63大厦以全新面貌重生。在铭记40年历史的同时，开始迈向未来的新旅程。" }
+    },
+    "brand": {
+      "title": "品牌理念",
+      "desc": "63大厦不仅仅是一座建筑。它是承载首尔市民梦想与渴望的空间，是韩国向世界延伸的自豪，也是为每个人献上特别时刻的综合文化空间。"
+    }
+  },
+  "gfConcept": {
+    "hero": { "title": "GF设计理念", "subtitle": "金色与光的和谐" },
+    "concept": {
+      "title": "全新地面层",
+      "desc": "63大厦的地面层以'金色森林'为概念重生。受建筑金色外观启发的室内设计将引导访客进入远离日常的特别世界。"
+    },
+    "elements": {
+      "title": "设计元素",
+      "light": { "title": "光与金色", "desc": "63大厦的象征金色光芒融入整个室内空间。自然采光与人工照明的和谐营造出每时每刻不同的氛围。" },
+      "nature": { "title": "自然与城市", "desc": "水、风、光的元素融入空间设计，体现其位于汉江边的地理特色。" },
+      "heritage": { "title": "历史与现在", "desc": "尊重这座40年历史建筑的身份，以现代感觉重新诠释。" }
+    }
+  },
+  "floorMap": {
+    "hero": { "title": "楼层导览", "subtitle": "63大厦楼层指南" },
+    "title": "楼层指南",
+    "selectFloor": "选择楼层",
+    "facilities": "便利设施",
+    "stores": "店铺"
+  },
+  "zoneGuide": {
+    "hero": { "title": "区域指南", "subtitle": "寻找您想要的空间" },
+    "zones": {
+      "all": "全部",
+      "FNB": "餐饮",
+      "RETAIL": "零售",
+      "AMENITY": "便利设施",
+      "CULTURE": "文化",
+      "SERVICE": "服务"
+    },
+    "floor": "楼层",
+    "hours": "营业时间",
+    "phone": "电话"
+  },
+  "observatory": {
+    "hero": { "title": "观景台", "subtitle": "一览首尔全貌" },
+    "info": {
+      "title": "从天空俯瞰首尔",
+      "desc": "在地上60层、高249米处展开的首尔360度全景。晴天可以一览从北汉山到冠岳山、沿汉江展开的首尔全景。",
+      "floor": "60楼",
+      "height": "249米",
+      "hours": "10:00 - 22:00",
+      "ticket": "购票"
+    },
+    "features": {
+      "view360": { "title": "360°全景", "desc": "一览首尔全城" },
+      "night": { "title": "夜景项目", "desc": "周五六特别夜间开放" },
+      "photo": { "title": "拍照区", "desc": "为留下美好记忆的特别空间" }
+    }
+  },
+  "pompidou": {
+    "hero": { "title": "蓬皮杜×63", "subtitle": "世界最佳当代艺术" },
+    "info": {
+      "title": "巴黎来到首尔",
+      "desc": "与法国巴黎蓬皮杜国家艺术文化中心合作诞生的63大厦全新文化空间。在首尔欣赏世界级当代艺术作品。",
+      "floor": "2~3楼",
+      "hours": "10:00 - 21:00（周一闭馆）",
+      "ticket": "购票"
+    }
+  },
+  "buffet": {
+    "hero": { "title": "招牌自助餐", "subtitle": "极致美食体验" },
+    "info": {
+      "title": "63海鲜自助餐",
+      "desc": "在一处享用新鲜时令海鲜和各种国内外菜肴的高端自助餐。厨师们现场烹饪的直播厨房站提供最高品质的用餐体验。",
+      "floor": "地下1楼",
+      "hours": "11:30 - 21:00",
+      "waiting": "加入等候名单"
+    }
+  },
+  "restaurant": {
+    "hero": { "title": "天空餐厅", "subtitle": "57-59楼高级餐厅" },
+    "info": {
+      "title": "天空中的美食之旅",
+      "desc": "横跨57至59楼的高级餐厅。以汉江为背景的极致用餐体验。让您的特别日子更加特别。",
+      "floor": "57~59楼",
+      "hours": "11:30 - 22:00",
+      "ticket": "预约"
+    }
+  },
+  "news": { "title": "消息", "notice": "公告", "news": "新闻", "all": "全部", "noData": "暂无消息。" },
+  "common": {
+    "loading": "加载中...",
+    "error": "发生错误",
+    "more": "更多",
+    "close": "关闭",
+    "back": "返回",
+    "viewMap": "查看地图",
+    "externalLink": "即将跳转到外部网站",
+    "floor": "楼",
+    "hours": "营业时间",
+    "phone": "电话"
+  },
+  "admin": {
+    "title": "管理员",
+    "login": { "title": "管理员登录", "username": "用户名", "password": "密码", "submit": "登录", "error": "用户名或密码不正确" },
+    "dashboard": { "title": "仪表板", "welcome": "欢迎" },
+    "news": { "title": "消息管理", "add": "添加消息", "edit": "编辑消息", "delete": "删除", "type": "类型", "published": "发布状态" },
+    "floorMap": { "title": "楼层地图管理", "add": "添加楼层", "edit": "编辑楼层" },
+    "stores": { "title": "店铺管理", "add": "添加店铺", "edit": "编辑店铺", "zone": "区域" },
+    "links": { "title": "外部链接管理", "add": "添加链接", "edit": "编辑链接", "type": "类型", "url": "网址" },
+    "save": "保存",
+    "cancel": "取消",
+    "deleteConfirm": "确定要删除吗？",
+    "logout": "退出"
+  },
+  "footer": {
+    "address": "首尔特别市永登浦区63路50号",
+    "tel": "总机: 02-789-5663",
+    "copyright": "© 2024 63大厦. 版权所有。",
+    "privacy": "隐私政策",
+    "terms": "使用条款"
+  }
+}
