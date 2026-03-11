@@ -53,7 +53,7 @@ export default function FloorMap() {
       <PageHero
         title={t('floorMap.hero.title')}
         subtitle={t('floorMap.hero.subtitle')}
-        imageSrc="/images/hero-bg.svg"
+        imageSrc="https://images.unsplash.com/photo-1526481280693-3bfa7568e0f3?auto=format&fit=crop&w=1920&q=80"
       />
 
       <div className="max-w-7xl mx-auto px-6 py-16 md:py-24">

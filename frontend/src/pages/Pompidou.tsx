@@ -14,7 +14,7 @@ export default function Pompidou() {
   return (
     <div>
       <div className="relative h-[60vh] overflow-hidden">
-        <img src="/images/pompidou.svg" alt="Pompidou" className="w-full h-full object-cover" />
+        <img src="https://images.unsplash.com/photo-1533777857889-4be7c70b33f7?auto=format&fit=crop&w=1920&q=80" alt="Pompidou" className="w-full h-full object-cover" />
         <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
           <div className="text-center text-white animate-fade-in">
             <p className="text-gold-400 text-xs tracking-[0.4em] uppercase mb-3">{t('pompidou.hero.subtitle')}</p>
@@ -28,7 +28,7 @@ export default function Pompidou() {
         <div className="max-w-5xl mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="bg-gray-50 p-8 rounded-sm">
-              <img src="/images/pompidou.svg" alt="Art Exhibition" className="w-full rounded-sm" />
+              <img src="https://images.unsplash.com/photo-1533777857889-4be7c70b33f7?auto=format&fit=crop&w=1920&q=80" alt="Art Exhibition" className="w-full rounded-sm" />
             </div>
             <div>
               <div className="w-10 h-0.5 bg-gold-500 mb-4" />

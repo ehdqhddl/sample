@@ -14,7 +14,7 @@ export default function Restaurant() {
   return (
     <div>
       <div className="relative h-[70vh] overflow-hidden">
-        <img src="/images/restaurant.svg" alt="Restaurant" className="w-full h-full object-cover" />
+        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1920&q=80" alt="Restaurant" className="w-full h-full object-cover" />
         <div className="absolute inset-0 bg-black/60 flex items-center justify-center">
           <div className="text-center text-white animate-fade-in">
             <p className="text-gold-400 text-xs tracking-[0.4em] uppercase mb-3">{t('restaurant.hero.subtitle')}</p>
@@ -47,7 +47,7 @@ export default function Restaurant() {
               </a>
             </div>
             <div className="overflow-hidden">
-              <img src="/images/restaurant.svg" alt="Restaurant" className="w-full rounded-sm" />
+              <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1920&q=80" alt="Restaurant" className="w-full rounded-sm" />
             </div>
           </div>
         </div>

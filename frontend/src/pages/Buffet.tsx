@@ -14,7 +14,7 @@ export default function Buffet() {
   return (
     <div>
       <div className="relative h-[60vh] overflow-hidden">
-        <img src="/images/buffet.svg" alt="Buffet" className="w-full h-full object-cover" />
+        <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=1920&q=80" alt="Buffet" className="w-full h-full object-cover" />
         <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
           <div className="text-center text-white animate-fade-in">
             <p className="text-gold-400 text-xs tracking-[0.4em] uppercase mb-3">{t('buffet.hero.subtitle')}</p>
@@ -44,7 +44,7 @@ export default function Buffet() {
               </a>
             </div>
             <div className="overflow-hidden rounded-sm">
-              <img src="/images/buffet.svg" alt="Buffet" className="w-full" />
+              <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=1920&q=80" alt="Buffet" className="w-full" />
             </div>
           </div>
         </div>

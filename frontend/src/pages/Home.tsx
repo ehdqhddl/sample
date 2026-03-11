@@ -92,8 +92,8 @@ export default function Home() {
           style={{ transform: `translateY(${heroOffset}px)` }}
         >
           <img
-            src="/images/hero-bg.svg"
-            alt="63 Building"
+            src="https://images.unsplash.com/photo-1526481280693-3bfa7568e0f3?auto=format&fit=crop&w=1920&q=80"
+            alt="63 Building Seoul"
             className="w-full h-[120%] object-cover"
             style={{ marginTop: '-10%' }}
           />
@@ -153,7 +153,7 @@ export default function Home() {
           style={{ transform: `translateY(${heroOffset * 0.5}px)` }}
         >
           <img
-            src="/images/story.svg"
+            src="https://images.unsplash.com/photo-1517154421773-0529f29ea451?auto=format&fit=crop&w=1920&q=80"
             alt="63 Building Story"
             className="w-full h-[120%] object-cover"
             style={{ marginTop: '-10%' }}
@@ -306,7 +306,7 @@ export default function Home() {
           style={{ transform: `translateY(${heroOffset * 0.3}px)` }}
         >
           <img
-            src="/images/gf-concept.svg"
+            src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1920&q=80"
             alt="GF Design Concept"
             className="w-full h-[120%] object-cover"
             style={{ marginTop: '-10%' }}

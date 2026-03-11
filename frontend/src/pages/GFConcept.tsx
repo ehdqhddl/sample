@@ -11,7 +11,7 @@ export default function GFConcept() {
   return (
     <div>
       <div className="relative h-[60vh] overflow-hidden">
-        <img src="/images/gf-concept.svg" alt="GF Concept" className="w-full h-full object-cover" />
+        <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1920&q=80" alt="GF Concept" className="w-full h-full object-cover" />
         <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
           <div className="text-center text-white animate-fade-in">
             <p className="text-gold-400 text-xs tracking-[0.4em] uppercase mb-3">{t('gfConcept.hero.subtitle')}</p>
@@ -50,7 +50,7 @@ export default function GFConcept() {
       </section>
 
       <section className="relative h-64 overflow-hidden">
-        <img src="/images/gf-concept.svg" alt="" className="w-full h-full object-cover" />
+        <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1920&q=80" alt="" className="w-full h-full object-cover" />
         <div className="absolute inset-0 bg-building-dark/80 flex items-center justify-center">
           <div className="text-center text-white">
             <p className="text-gold-400 tracking-[0.3em] text-sm">GROUND FLOOR</p>

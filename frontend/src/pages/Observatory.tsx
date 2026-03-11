@@ -21,7 +21,7 @@ export default function Observatory() {
   return (
     <div>
       <div className="relative h-[70vh] overflow-hidden">
-        <img src="/images/observatory.svg" alt="Observatory" className="w-full h-full object-cover" />
+        <img src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&w=1920&q=80" alt="Observatory" className="w-full h-full object-cover" />
         <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
           <div className="text-center text-white animate-fade-in">
             <p className="text-gold-400 text-xs tracking-[0.4em] uppercase mb-3">{t('observatory.hero.subtitle')}</p>
@@ -60,7 +60,7 @@ export default function Observatory() {
               </a>
             </div>
             <div className="bg-building-dark rounded-sm overflow-hidden h-80">
-              <img src="/images/observatory.svg" alt="Observatory View" className="w-full h-full object-cover opacity-90" />
+              <img src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&w=1920&q=80" alt="Observatory View" className="w-full h-full object-cover opacity-90" />
             </div>
           </div>
         </div>

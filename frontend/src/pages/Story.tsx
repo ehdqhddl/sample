@@ -8,7 +8,7 @@ export default function Story() {
   return (
     <div>
       <div className="relative h-[60vh] overflow-hidden">
-        <img src="/images/story.svg" alt="63 Building Story" className="w-full h-full object-cover" />
+        <img src="https://images.unsplash.com/photo-1517154421773-0529f29ea451?auto=format&fit=crop&w=1920&q=80" alt="63 Building Story" className="w-full h-full object-cover" />
         <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
           <div className="text-center text-white animate-fade-in">
             <p className="text-gold-400 text-xs tracking-[0.4em] uppercase mb-3">{t('story.hero.subtitle')}</p>
