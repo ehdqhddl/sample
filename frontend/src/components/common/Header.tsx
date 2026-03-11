@@ -88,19 +88,19 @@ export default function Header() {
               onMouseEnter={() => setFacilityOpen(true)}
               onMouseLeave={() => setFacilityOpen(false)}
             >
-              <button className={`flex items-center gap-1.5 text-xs tracking-widest uppercase font-sans transition-colors duration-200 ${
+              <button className={`flex items-center gap-1.5 text-xs tracking-widest uppercase font-sans transition-colors duration-200 pb-2 ${
                 isTransparent ? 'text-cream-400 hover:text-cream-200' : 'text-cream-500 hover:text-cream-200'
               }`}>
                 시설 안내 <ChevronDown size={12} strokeWidth={1.5} />
               </button>
               {facilityOpen && (
-                <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 bg-forest-950/98 border border-forest-800 min-w-[160px] animate-slide-down">
+                <div className="absolute top-full left-0 bg-forest-950 border border-forest-800 min-w-[180px] animate-slide-down z-50 shadow-xl">
                   {FACILITY_ITEMS.map(item => (
                     <NavLink
                       key={item.key}
                       to={item.path}
                       className={({ isActive }) =>
-                        `block px-5 py-3 text-xs tracking-widest uppercase font-sans transition-colors ${
+                        `block px-5 py-3.5 text-xs tracking-widest uppercase font-sans transition-colors ${
                           isActive ? 'text-cream-200 bg-forest-800' : 'text-cream-500 hover:text-cream-200 hover:bg-forest-900'
                         }`
                       }
