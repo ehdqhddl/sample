@@ -1,0 +1,243 @@
+package com.building63.config
+
+import com.building63.entity.*
+import com.building63.repository.*
+import org.springframework.boot.ApplicationArguments
+import org.springframework.boot.ApplicationRunner
+import org.springframework.core.annotation.Order
+import org.springframework.stereotype.Component
+import java.time.LocalDateTime
+
+@Component
+@Order(2)
+class SampleDataInitializer(
+    private val newsRepository: NewsRepository,
+    private val floorMapRepository: FloorMapRepository,
+    private val storeRepository: StoreRepository,
+    private val externalLinkRepository: ExternalLinkRepository,
+) : ApplicationRunner {
+
+    override fun run(args: ApplicationArguments) {
+        initLinks()
+        initFloorMaps()
+        initStores()
+        initNews()
+    }
+
+    private fun initLinks() {
+        if (externalLinkRepository.count() > 0) return
+        externalLinkRepository.saveAll(listOf(
+            ExternalLink(linkType = LinkType.OBSERVATORY, url = "https://www.63art.co.kr/observatory",
+                labelKo = "전망대 티켓 예매", labelEn = "Observatory Tickets",
+                labelZh = "天文台门票预订", labelJa = "展望台チケット予約", active = true, displayOrder = 1),
+            ExternalLink(linkType = LinkType.POMPIDOU, url = "https://www.63art.co.kr/pompidou",
+                labelKo = "퐁피두 전시 예매", labelEn = "Pompidou Exhibition Tickets",
+                labelZh = "蓬皮杜展览门票", labelJa = "ポンピドゥー展チケット", active = true, displayOrder = 2),
+            ExternalLink(linkType = LinkType.BUFFET, url = "https://www.63art.co.kr/buffet",
+                labelKo = "뷔페 웨이팅 등록", labelEn = "Buffet Waiting List",
+                labelZh = "自助餐候位登记", labelJa = "ビュッフェ待ち登録", active = true, displayOrder = 3),
+            ExternalLink(linkType = LinkType.RESTAURANT, url = "https://www.63art.co.kr/restaurant",
+                labelKo = "레스토랑 예약", labelEn = "Restaurant Reservation",
+                labelZh = "餐厅预约", labelJa = "レストラン予約", active = true, displayOrder = 4),
+        ))
+    }
+
+    private fun initFloorMaps() {
+        if (floorMapRepository.count() > 0) return
+        floorMapRepository.saveAll(listOf(
+            FloorMap(floorNumber = "B1", floorNameKo = "지하 1층", floorNameEn = "Basement 1",
+                floorNameZh = "地下1层", floorNameJa = "地下1階",
+                descriptionKo = "F&B 특화존, 씨푸드 뷔페, 푸드코트, 편의점, 지하주차장 연결",
+                descriptionEn = "F&B zone, Seafood buffet, Food court, Convenience store, Underground parking",
+                descriptionZh = "F&B特区、海鲜自助餐、美食广场、便利店、地下停车场",
+                descriptionJa = "F&Bゾーン、シーフードビュッフェ、フードコート、コンビニ、地下駐車場", displayOrder = 1, active = true),
+            FloorMap(floorNumber = "GF", floorNameKo = "지상층", floorNameEn = "Ground Floor",
+                floorNameZh = "地面层", floorNameJa = "グラウンドフロア",
+                descriptionKo = "메인 입구, 안내 데스크, 카페 63, 리테일존, 엘리베이터 코어",
+                descriptionEn = "Main entrance, Information desk, Cafe 63, Retail zone, Elevator core",
+                descriptionZh = "主入口、咨询台、63咖啡、零售区、电梯核心",
+                descriptionJa = "メインエントランス、案内デスク、カフェ63、リテールゾーン、エレベーターコア", displayOrder = 2, active = true),
+            FloorMap(floorNumber = "1F-10F", floorNameKo = "1층~10층", floorNameEn = "1F–10F",
+                floorNameZh = "1楼~10楼", floorNameJa = "1F~10F",
+                descriptionKo = "리테일존, 국내외 브랜드 매장, 갤러리, 기념품샵",
+                descriptionEn = "Retail zone, Domestic & international brands, Gallery, Souvenir shops",
+                descriptionZh = "零售区、国内外品牌店、画廊、纪念品商店",
+                descriptionJa = "リテールゾーン、国内外ブランド店、ギャラリー、お土産ショップ", displayOrder = 3, active = true),
+            FloorMap(floorNumber = "2F-3F", floorNameKo = "2층~3층 (퐁피두)", floorNameEn = "2F–3F (Pompidou)",
+                floorNameZh = "2楼~3楼（蓬皮杜）", floorNameJa = "2F~3F（ポンピドゥー）",
+                descriptionKo = "퐁피두 센터 협업 현대미술 전시관 (2025년 상설 운영, 화~일 10:00-19:00)",
+                descriptionEn = "Centre Pompidou collaboration contemporary art exhibition (2025 permanent, Tue-Sun 10:00-19:00)",
+                descriptionZh = "蓬皮杜中心合作当代艺术展馆（2025年常设，周二至周日10:00-19:00）",
+                descriptionJa = "ポンピドゥーセンター協力現代アート展示館（2025年常設、火〜日10:00〜19:00）", displayOrder = 4, active = true),
+            FloorMap(floorNumber = "11F-56F", floorNameKo = "11층~56층", floorNameEn = "11F–56F",
+                floorNameZh = "11楼~56楼", floorNameJa = "11F~56F",
+                descriptionKo = "오피스 및 법인 전용 시설 (일반 방문 불가)",
+                descriptionEn = "Office & Corporate facilities (Not open to general public)",
+                descriptionZh = "办公室及企业专用设施（不对公众开放）",
+                descriptionJa = "オフィス・法人専用施設（一般来場不可）", displayOrder = 5, active = true),
+            FloorMap(floorNumber = "57F-59F", floorNameKo = "57층~59층 (레스토랑)", floorNameEn = "57F–59F (Restaurant)",
+                floorNameZh = "57楼~59楼（餐厅）", floorNameJa = "57F~59F（レストラン）",
+                descriptionKo = "더 스카이 레스토랑, 바 & 라운지, 와인 셀러 (한강 파노라마 뷰)",
+                descriptionEn = "The Sky Restaurant, Bar & Lounge, Wine Cellar (Han River panorama view)",
+                descriptionZh = "天空餐厅、酒吧&休息室、酒窖（汉江全景）",
+                descriptionJa = "ザ・スカイレストラン、バー＆ラウンジ、ワインセラー（漢江パノラマ）", displayOrder = 6, active = true),
+            FloorMap(floorNumber = "60F", floorNameKo = "60층 (전망대)", floorNameEn = "60F (Observatory)",
+                floorNameZh = "60楼（观景台）", floorNameJa = "60F（展望台）",
+                descriptionKo = "전망대 – 서울 360° 파노라마, 높이 249m, 실내·외 전망 데크 운영",
+                descriptionEn = "Observatory – Seoul 360° Panorama, 249m altitude, indoor & outdoor viewing decks",
+                descriptionZh = "观景台 – 首尔360度全景，高度249米，室内外观景台",
+                descriptionJa = "展望台 – ソウル360度パノラマ、高さ249m、屋内外展望デッキ", displayOrder = 7, active = true),
+        ))
+    }
+
+    private fun initStores() {
+        if (storeRepository.count() > 0) return
+        storeRepository.saveAll(listOf(
+            Store(nameKo = "63 씨푸드뷔페", nameEn = "63 Seafood Buffet", nameZh = "63海鲜自助餐", nameJa = "63シーフードビュッフェ",
+                floor = "B1", zone = StoreZone.FNB,
+                descriptionKo = "신선한 해산물과 제철 식재료로 만든 100여 가지 요리를 즐길 수 있는 프리미엄 뷔페. 킹크랩, 랍스터, 광어 회 등 최고급 해산물 제공.",
+                descriptionEn = "Premium buffet with 100+ dishes. Features king crab, lobster, fresh sashimi and seasonal ingredients.",
+                descriptionZh = "100多道以新鲜海鲜和时令食材制作的菜肴，提供帝王蟹、龙虾、比目鱼刺身等顶级海鲜。",
+                descriptionJa = "旬の食材を使った100品以上の料理が楽しめるプレミアムビュッフェ。キングクラブ、ロブスター、ヒラメ刺身など。",
+                phone = "02-789-5600", hours = "11:30–21:00 (브레이크 15:00–17:00)", displayOrder = 1, active = true),
+            Store(nameKo = "63 푸드코트", nameEn = "63 Food Court", nameZh = "63美食广场", nameJa = "63フードコート",
+                floor = "B1", zone = StoreZone.FNB,
+                descriptionKo = "한식, 중식, 일식, 양식 등 다양한 장르의 음식을 합리적인 가격에 즐길 수 있는 푸드코트.",
+                descriptionEn = "Food court offering Korean, Chinese, Japanese and Western cuisine at affordable prices.",
+                descriptionZh = "以实惠价格享用韩式、中式、日式、西式等多种料理的美食广场。",
+                descriptionJa = "韓食、中華、和食、洋食など多様なジャンルをリーズナブルな価格で楽しめるフードコート。",
+                phone = "02-789-5650", hours = "10:00–21:00", displayOrder = 2, active = true),
+            Store(nameKo = "세븐일레븐 63점", nameEn = "7-Eleven 63", nameZh = "7-Eleven 63店", nameJa = "7-Eleven 63店",
+                floor = "B1", zone = StoreZone.AMENITY,
+                descriptionKo = "24시간 운영 편의점. 간편식, 음료, 생필품 구비.",
+                descriptionEn = "24-hour convenience store with ready-made food, beverages, and daily essentials.",
+                descriptionZh = "24小时便利店，提供简餐、饮料和日常用品。",
+                descriptionJa = "24時間営業のコンビニ。簡単な食事、飲み物、日用品を取り揃え。",
+                phone = "02-789-5100", hours = "24시간", displayOrder = 3, active = true),
+            Store(nameKo = "약국", nameEn = "Pharmacy", nameZh = "药店", nameJa = "薬局",
+                floor = "B1", zone = StoreZone.AMENITY,
+                descriptionKo = "의약품, 건강식품, 화장품 판매 약국.",
+                descriptionEn = "Pharmacy with medicines, health supplements, and cosmetics.",
+                descriptionZh = "销售药品、保健食品和化妆品的药店。",
+                descriptionJa = "医薬品、健康食品、化粧品を販売する薬局。",
+                phone = "02-789-5200", hours = "10:00–20:00", displayOrder = 4, active = true),
+            Store(nameKo = "카페 63", nameEn = "Cafe 63", nameZh = "63咖啡馆", nameJa = "カフェ63",
+                floor = "GF", zone = StoreZone.FNB,
+                descriptionKo = "63빌딩 대표 카페. 시그니처 에스프레소, 계절 음료, 수제 디저트. 한강 뷰 테라스 운영.",
+                descriptionEn = "63 Building signature cafe. Specialty espresso, seasonal drinks, handcrafted desserts. Han River view terrace.",
+                descriptionZh = "63大厦特色咖啡馆。特制浓缩咖啡、季节饮品和手工甜点。设有汉江景观露台座位。",
+                descriptionJa = "63ビルのシグネチャーカフェ。スペシャルティエスプレッソ、季節ドリンク、手作りデザート。漢江ビューテラス席あり。",
+                phone = "02-789-5900", hours = "08:00–22:00", displayOrder = 5, active = true),
+            Store(nameKo = "63 갤러리샵", nameEn = "63 Gallery Shop", nameZh = "63画廊商店", nameJa = "63ギャラリーショップ",
+                floor = "1F-10F", zone = StoreZone.RETAIL,
+                descriptionKo = "퐁피두 센터 협업 아트 굿즈 및 국내외 아트 브랜드 상품 판매.",
+                descriptionEn = "Art goods from Centre Pompidou and domestic/international art brands.",
+                descriptionZh = "蓬皮杜中心合作艺术周边及国内外艺术品牌商品。",
+                descriptionJa = "ポンピドゥーセンターコラボグッズと国内外アートブランド商品を販売。",
+                phone = "02-789-5800", hours = "10:00–21:00", displayOrder = 6, active = true),
+            Store(nameKo = "63 기념품샵", nameEn = "63 Souvenir Shop", nameZh = "63纪念品商店", nameJa = "63お土産ショップ",
+                floor = "1F-10F", zone = StoreZone.RETAIL,
+                descriptionKo = "63빌딩 공식 기념품, 서울 특산품, 여행 기념품 판매.",
+                descriptionEn = "Official 63 Building souvenirs, Seoul specialty products, and travel mementos.",
+                descriptionZh = "63大厦官方纪念品、首尔特产及旅游纪念品销售。",
+                descriptionJa = "63ビル公式お土産、ソウル特産品、旅行記念品を販売。",
+                phone = "02-789-5810", hours = "10:00–21:00", displayOrder = 7, active = true),
+            Store(nameKo = "퐁피두 뮤지엄샵", nameEn = "Pompidou Museum Shop", nameZh = "蓬皮杜博物馆商店", nameJa = "ポンピドゥーミュージアムショップ",
+                floor = "2F-3F", zone = StoreZone.CULTURE,
+                descriptionKo = "퐁피두 센터 공식 뮤지엄샵. 전시 도록, 아트 포스터, 한정판 기념품.",
+                descriptionEn = "Official Pompidou museum shop. Exhibition catalogues, art posters, limited edition souvenirs.",
+                descriptionZh = "蓬皮杜中心官方博物馆商店。展览图录、艺术海报、限量版纪念品。",
+                descriptionJa = "ポンピドゥーセンター公式ショップ。展覧会カタログ、アートポスター、限定記念品。",
+                phone = "02-789-5820", hours = "10:00–19:00 (월요일 휴무)", displayOrder = 8, active = true),
+            Store(nameKo = "더 스카이 레스토랑", nameEn = "The Sky Restaurant", nameZh = "天空餐厅", nameJa = "ザ・スカイレストラン",
+                floor = "57F-59F", zone = StoreZone.FNB,
+                descriptionKo = "한강과 서울 도심 전망의 프리미엄 파인다이닝. 컨템퍼러리 코스 메뉴. 드레스코드 있음.",
+                descriptionEn = "Premium fine dining with Han River & Seoul panoramic views. Contemporary course menu. Dress code enforced.",
+                descriptionZh = "俯瞰汉江和首尔市中心的高级精致餐厅。现代套餐。有着装要求。",
+                descriptionJa = "漢江とソウル市街を望むプレミアムファインダイニング。コンテンポラリーコース。ドレスコードあり。",
+                phone = "02-789-5700", hours = "11:30–22:00 (런치 11:30–14:30 / 디너 18:00–22:00)", displayOrder = 9, active = true),
+            Store(nameKo = "스카이 바 & 라운지", nameEn = "Sky Bar & Lounge", nameZh = "天空酒吧&休息室", nameJa = "スカイバー＆ラウンジ",
+                floor = "57F-59F", zone = StoreZone.FNB,
+                descriptionKo = "58층 시그니처 칵테일 바. 와인, 위스키, 수제 칵테일과 서울 야경.",
+                descriptionEn = "Signature cocktail bar on 58F. Wine, whisky, handcrafted cocktails with Seoul night views.",
+                descriptionZh = "58层特色鸡尾酒吧。美酒佳酿，欣赏首尔夜景。",
+                descriptionJa = "58Fのシグネチャーカクテルバー。ワイン、ウイスキー、クラフトカクテルとソウルの夜景。",
+                phone = "02-789-5720", hours = "17:00–24:00", displayOrder = 10, active = true),
+            Store(nameKo = "와인 셀러 57", nameEn = "Wine Cellar 57", nameZh = "葡萄酒窖57", nameJa = "ワインセラー57",
+                floor = "57F-59F", zone = StoreZone.FNB,
+                descriptionKo = "세계 500여 종 프리미엄 와인 보유 프라이빗 와인 다이닝룸. 소믈리에 상주. 예약 필수.",
+                descriptionEn = "Private wine dining room with 500+ premium wines worldwide. Sommelier on-site. Reservation required.",
+                descriptionZh = "收藏全球500余种高级葡萄酒的私人餐厅。常驻侍酒师。需提前预约。",
+                descriptionJa = "世界500種以上のプレミアムワインを取り揃えたプライベートダイニングルーム。ソムリエ常駐。要予約。",
+                phone = "02-789-5730", hours = "18:00–23:00 (예약 필수)", displayOrder = 11, active = true),
+            Store(nameKo = "63 아트&기프트 (전망대)", nameEn = "63 Art & Gift (Observatory)", nameZh = "63艺术礼品店（观景台）", nameJa = "63アート＆ギフト（展望台）",
+                floor = "60F", zone = StoreZone.RETAIL,
+                descriptionKo = "전망대 60층 기념품 및 아트 굿즈 판매. 서울 야경 사진, 63빌딩 아트 포스터.",
+                descriptionEn = "Souvenir and art goods on Observatory 60F. Seoul night view photos, art posters.",
+                descriptionZh = "60楼观景台内纪念品和艺术周边商店。首尔夜景照片、艺术海报。",
+                descriptionJa = "展望台60Fのお土産・アートグッズショップ。ソウル夜景写真、63ビルアートポスター。",
+                phone = "02-789-5850", hours = "10:00–21:30", displayOrder = 12, active = true),
+        ))
+    }
+
+    private fun initNews() {
+        if (newsRepository.count() > 0) return
+        val now = LocalDateTime.now()
+        newsRepository.saveAll(listOf(
+            News(titleKo = "63빌딩 리뉴얼 그랜드 오픈",
+                titleEn = "63 Building Grand Reopening",
+                titleZh = "63大厦焕新盛大开业",
+                titleJa = "63ビルリニューアルグランドオープン",
+                contentKo = "63빌딩이 대대적인 리뉴얼을 마치고 새롭게 선보입니다. 40년 역사의 랜드마크가 현대적인 감각으로 재탄생하여 더욱 다양해진 F&B, 리테일, 문화 공간으로 여러분을 맞이합니다. 퐁피두 센터와의 협업으로 수준 높은 현대미술 전시를 상시 운영하며, 57~59층 스카이 다이닝과 지하 1층 씨푸드 뷔페까지 새로운 미식 경험을 제공합니다.",
+                contentEn = "63 Building reopens after major renovations. The 40-year landmark has been reborn with a modern sensibility, welcoming you with more diverse F&B, retail, and cultural spaces. In collaboration with Centre Pompidou, we offer high-quality contemporary art exhibitions, sky dining on floors 57-59, and a seafood buffet on B1F.",
+                contentZh = "63大厦完成大规模翻新后重新开业。这座有着40年历史的地标以现代感焕然一新，为您带来更多样化的F&B、零售和文化空间。与蓬皮杜中心合作举办高水准当代艺术展，57-59层天空餐厅和地下一层海鲜自助餐为您带来全新美食体验。",
+                contentJa = "63ビルが大規模なリニューアルを経て新たに登場。40年の歴史を持つランドマークが現代的な感性で生まれ変わり、より多様なF&B、リテール、文化空間でお出迎えします。ポンピドゥーセンターとのコラボで現代アート展を常時開催、57〜59階のスカイダイニングやB1Fシーフードビュッフェで新たな食体験を提供します。",
+                newsType = NewsType.NEWS, published = true, createdAt = now.minusDays(7), updatedAt = now.minusDays(7)),
+            News(titleKo = "전망대 특별 야간 프로그램 운영",
+                titleEn = "Special Night Program at Observatory",
+                titleZh = "天文台特别夜间项目",
+                titleJa = "展望台特別夜間プログラム開催",
+                contentKo = "한강의 아름다운 야경을 감상할 수 있는 특별 야간 전망 프로그램을 운영합니다. 매주 금·토요일 저녁 9시부터 11시까지, 249m 높이의 전망대에서 서울의 화려한 야경을 즐기세요. 야간 조명 쇼와 함께 시그니처 음료도 제공됩니다. 사전 예약 필수.",
+                contentEn = "Enjoy the beautiful night view of Han River with our special night program. Every Friday and Saturday, 9pm–11pm, enjoy Seoul's spectacular night view from the 249m observatory. Signature drinks provided along with a night light show. Advance reservation required.",
+                contentZh = "特别夜间项目让您欣赏汉江美丽夜景。每周五六晚9时至11时，在249米高的观景台欣赏首尔绚丽夜景。夜间灯光秀配合特色饮品。需提前预约。",
+                contentJa = "漢江の美しい夜景を楽しめる特別夜間プログラム。毎週金・土曜日夜9時〜11時、249mの展望台からソウルの夜景をご覧ください。照明ショーとシグネチャードリンクもご提供。要事前予約。",
+                newsType = NewsType.NEWS, published = true, createdAt = now.minusDays(5), updatedAt = now.minusDays(5)),
+            News(titleKo = "퐁피두 센터 컬렉션 특별전 개막",
+                titleEn = "Centre Pompidou Collection Special Exhibition",
+                titleZh = "蓬皮杜中心馆藏特别展览开幕",
+                titleJa = "ポンピドゥーセンターコレクション特別展開幕",
+                contentKo = "파리 퐁피두 센터와의 협업으로 세계적인 현대미술 컬렉션이 서울에 상륙합니다. 피카소, 마티스, 칸딘스키 등 거장들의 작품 80여 점이 63빌딩 2~3층에 전시됩니다. 전시 기간: 2025년 3월~12월. 화~일 10:00–19:00. 월요일 휴관.",
+                contentEn = "World-class contemporary art collections from Centre Pompidou Paris arrive in Seoul. Over 80 works by masters including Picasso, Matisse, and Kandinsky on floors 2–3. Exhibition: March–December 2025. Tue–Sun 10:00–19:00. Closed Mondays.",
+                contentZh = "与巴黎蓬皮杜中心合作，世界级现代艺术馆藏登陆首尔。毕加索、马蒂斯、康定斯基等大师80余件作品在63大厦2-3层展出。展览期间：2025年3月至12月。周二至周日10:00-19:00。周一闭馆。",
+                contentJa = "パリのポンピドゥーセンターとのコラボで、世界的な現代アートコレクションがソウルに上陸。ピカソ、マティス、カンディンスキーなど巨匠の作品80点以上が63ビル2〜3階に展示。2025年3月〜12月。火〜日10:00〜19:00。月曜休館。",
+                newsType = NewsType.NEWS, published = true, createdAt = now.minusDays(3), updatedAt = now.minusDays(3)),
+            News(titleKo = "[공지] 2025 운영시간 안내",
+                titleEn = "[Notice] 2025 Operating Hours",
+                titleZh = "[通知] 2025年营业时间",
+                titleJa = "[お知らせ] 2025年営業時間案内",
+                contentKo = "63빌딩 2025년 운영시간 안내입니다.\n▶ 전체 운영: 10:00–22:00 (연중무휴)\n▶ 전망대: 10:00–22:00 (입장 마감 21:30)\n▶ 씨푸드 뷔페: 11:30–21:00 (브레이크 15:00–17:00)\n▶ 스카이 레스토랑: 11:30–22:00\n▶ 퐁피두 전시: 10:00–19:00 (월요일 휴관)\n▶ 카페 63: 08:00–22:00",
+                contentEn = "2025 Operating Hours for 63 Building.\n▶ General: 10:00 AM–10:00 PM (Open year-round)\n▶ Observatory: 10:00–22:00 (Last entry 21:30)\n▶ Seafood Buffet: 11:30–21:00 (Break 15:00–17:00)\n▶ Sky Restaurant: 11:30–22:00\n▶ Pompidou Exhibition: 10:00–19:00 (Closed Mon)\n▶ Cafe 63: 08:00–22:00",
+                contentZh = "2025年63大厦营业时间。\n▶ 整体：10:00–22:00（全年无休）\n▶ 观景台：10:00–22:00（最晚入场21:30）\n▶ 海鲜自助餐：11:30–21:00（休息15:00–17:00）\n▶ 天空餐厅：11:30–22:00\n▶ 蓬皮杜展览：10:00–19:00（周一闭馆）\n▶ 63咖啡：08:00–22:00",
+                contentJa = "2025年63ビル営業時間のご案内。\n▶ 全体：10:00〜22:00（年中無休）\n▶ 展望台：10:00〜22:00（最終入場21:30）\n▶ シーフードビュッフェ：11:30〜21:00（ブレイク15:00〜17:00）\n▶ スカイレストラン：11:30〜22:00\n▶ ポンピドゥー展：10:00〜19:00（月曜休館）\n▶ カフェ63：08:00〜22:00",
+                newsType = NewsType.NOTICE, published = true, createdAt = now.minusDays(2), updatedAt = now.minusDays(2)),
+            News(titleKo = "[공지] 주차 안내",
+                titleEn = "[Notice] Parking Information",
+                titleZh = "[通知] 停车信息",
+                titleJa = "[お知らせ] 駐車案内",
+                contentKo = "63빌딩 지하주차장 이용 안내입니다.\n▶ 위치: 지하 1~3층 (총 300대)\n▶ 요금: 첫 30분 무료, 이후 10분당 1,000원\n▶ 시설 이용 시 최대 3시간 무료\n▶ 전기차 충전소 20기 운영\n▶ 문의: 02-789-5000",
+                contentEn = "63 Building underground parking information.\n▶ Location: B1–B3 (300 spaces)\n▶ Fee: First 30 min free, then 1,000 KRW/10 min\n▶ Up to 3 hours free with facility use\n▶ 20 EV charging stations\n▶ Inquiries: 02-789-5000",
+                contentZh = "63大厦地下停车场使用说明。\n▶ 位置：地下1-3层（共300个车位）\n▶ 收费：前30分钟免费，之后每10分钟1,000韩元\n▶ 使用设施可享最多3小时免费\n▶ 20台电动车充电站\n▶ 咨询：02-789-5000",
+                contentJa = "63ビル地下駐車場のご案内。\n▶ 場所：地下1〜3階（計300台）\n▶ 料金：最初の30分無料、以降10分1,000ウォン\n▶ 施設利用時最大3時間無料\n▶ EVチャージャー20台\n▶ お問い合わせ：02-789-5000",
+                newsType = NewsType.NOTICE, published = true, createdAt = now.minusDays(1), updatedAt = now.minusDays(1)),
+            News(titleKo = "봄맞이 올인원 패키지 출시",
+                titleEn = "Spring All-in-One Package Launch",
+                titleZh = "春季全包套餐推出",
+                titleJa = "春のオールインワンパッケージ発売",
+                contentKo = "따뜻한 봄을 맞아 63빌딩 특별 패키지를 출시합니다.\n[스프링 올인원 패키지]\n전망대 + 퐁피두 전시 + 씨푸드 뷔페\n▶ 성인: 정가 150,000원 → 패키지 99,000원 (34% 할인)\n▶ 아동: 정가 90,000원 → 패키지 65,000원\n▶ 가족 패키지(2+2): 320,000원\n예약 기간: 2025년 3월 1일~5월 31일",
+                contentEn = "Spring All-in-One Package: Observatory + Pompidou Exhibition + Seafood Buffet.\n▶ Adult: Regular 150,000 KRW → Package 99,000 KRW (34% off)\n▶ Child: Regular 90,000 KRW → Package 65,000 KRW\n▶ Family (2+2): 320,000 KRW\nBooking period: March 1–May 31, 2025",
+                contentZh = "春季全包套餐：观景台+蓬皮杜展览+海鲜自助餐。\n▶ 成人：原价150,000韩元→套餐99,000韩元（优惠34%）\n▶ 儿童：原价90,000韩元→套餐65,000韩元\n▶ 家庭套餐(2大+2小)：320,000韩元\n预订期间：2025年3月1日至5月31日",
+                contentJa = "スプリングオールインワンパッケージ：展望台＋ポンピドゥー展＋シーフードビュッフェ。\n▶ 大人：定価150,000ウォン→パッケージ99,000ウォン（34%割引）\n▶ 子ども：定価90,000ウォン→パッケージ65,000ウォン\n▶ ファミリー(2+2)：320,000ウォン\n予約期間：2025年3月1日〜5月31日",
+                newsType = NewsType.NEWS, published = true, createdAt = now, updatedAt = now),
+        ))
+    }
+}
