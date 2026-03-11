@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 560" width="800" height="560">
+  <rect width="800" height="560" fill="#f2ebe0"/>
+  <rect x="60" y="40" width="680" height="480" fill="none" stroke="#1a2e17" stroke-width="2.5"/>
+  <!-- Grid -->
+  <line x1="60" y1="200" x2="740" y2="200" stroke="#c8bfae" stroke-width="0.5"/>
+  <line x1="60" y1="360" x2="740" y2="360" stroke="#c8bfae" stroke-width="0.5"/>
+  <line x1="280" y1="40" x2="280" y2="520" stroke="#c8bfae" stroke-width="0.5"/>
+  <line x1="520" y1="40" x2="520" y2="520" stroke="#c8bfae" stroke-width="0.5"/>
+
+  <!-- The Sky Restaurant (57F - large view dining) -->
+  <rect x="70" y="50" width="440" height="300" fill="#d4c49a" stroke="#9a8a6d" stroke-width="1.5"/>
+  <text x="290" y="188" text-anchor="middle" font-family="Georgia,serif" font-size="16" fill="#1a2e17" font-weight="300">더 스카이 레스토랑</text>
+  <text x="290" y="210" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#5a5238">The Sky Restaurant · 57F</text>
+  <text x="290" y="232" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#7a6e52">한강 뷰 파인다이닝 · 11:30 – 22:00</text>
+  <!-- Window view indicator -->
+  <rect x="70" y="50" width="440" height="20" fill="#8aac7c" opacity="0.4"/>
+  <text x="290" y="65" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#263e22">한강 전망 ← → River View</text>
+
+  <!-- Private dining rooms -->
+  <rect x="520" y="50" width="110" height="145" fill="#ddd1be" stroke="#b8a78b" stroke-width="1"/>
+  <text x="575" y="120" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#5a5238">프라이빗</text>
+  <text x="575" y="135" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#5a5238">다이닝 A</text>
+
+  <rect x="640" y="50" width="90" height="145" fill="#ddd1be" stroke="#b8a78b" stroke-width="1"/>
+  <text x="685" y="120" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#5a5238">프라이빗</text>
+  <text x="685" y="135" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#5a5238">다이닝 B</text>
+
+  <!-- Bar & Lounge (58F concept) -->
+  <rect x="70" y="365" width="300" height="145" fill="#e8d5b0" stroke="#b8a78b" stroke-width="1.5"/>
+  <text x="220" y="435" text-anchor="middle" font-family="Georgia,serif" font-size="13" fill="#1a2e17" font-weight="300">바 &amp; 라운지</text>
+  <text x="220" y="455" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#7a6e52">Bar &amp; Lounge · 58F</text>
+
+  <!-- Elevator core -->
+  <rect x="520" y="200" width="210" height="165" fill="#c8bfae" stroke="#9a8a6d" stroke-width="1.5"/>
+  <text x="625" y="280" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#3d5c35">엘리베이터 코어</text>
+  <text x="625" y="296" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#5a5238">Elevator Core</text>
+
+  <!-- Sommelier / Wine cellar -->
+  <rect x="380" y="365" width="130" height="145" fill="#dce8d6" stroke="#6a8b5d" stroke-width="1"/>
+  <text x="445" y="430" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#263e22">와인 셀러</text>
+  <text x="445" y="447" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#4e6b42">Wine Cellar</text>
+
+  <!-- Floor label -->
+  <rect x="60" y="40" width="100" height="28" fill="#1a2e17"/>
+  <text x="110" y="59" text-anchor="middle" font-family="Georgia,serif" font-size="13" fill="#f2ebe0" font-weight="300">57–59F</text>
+
+  <!-- Legend -->
+  <rect x="60" y="525" width="12" height="10" fill="#d4c49a" stroke="#9a8a6d" stroke-width="1"/>
+  <text x="78" y="535" font-family="Georgia,serif" font-size="10" fill="#5a5238">레스토랑</text>
+  <rect x="160" y="525" width="12" height="10" fill="#e8d5b0" stroke="#b8a78b" stroke-width="1"/>
+  <text x="178" y="535" font-family="Georgia,serif" font-size="10" fill="#5a5238">라운지/바</text>
+  <rect x="265" y="525" width="12" height="10" fill="#c8bfae" stroke="#9a8a6d" stroke-width="1"/>
+  <text x="283" y="535" font-family="Georgia,serif" font-size="10" fill="#5a5238">코어</text>
+</svg>

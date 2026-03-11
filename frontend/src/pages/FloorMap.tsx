@@ -1,8 +1,17 @@
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useQuery } from '@tanstack/react-query'
+import { Clock, Phone } from 'lucide-react'
 import { publicApi } from '../api'
+import PageHero from '../components/common/PageHero'
 import type { FloorMap as FloorMapType, Store } from '../types'
+
+const FLOOR_MAP_IMAGES: Record<string, string> = {
+  'B1':      '/images/floor-b1.svg',
+  'GF':      '/images/floor-gf.svg',
+  '57F-59F': '/images/floor-57f.svg',
+  '60F':     '/images/floor-60f.svg',
+}
 
 export default function FloorMap() {
   const { t, i18n } = useTranslation()
@@ -18,10 +27,6 @@ export default function FloorMap() {
   const selectedFloor = floors.find(f => f.floorNumber === selected)
   const floorStores = stores.filter(s => s.floor === selected)
 
-  const getName = (item: FloorMapType | Store) => {
-    const key = `name${lang.charAt(0).toUpperCase() + lang.slice(1)}` as keyof typeof item
-    return (item as any)[key] || (item as any).nameKo || (item as any).floorNameKo || ''
-  }
   const getFloorName = (f: FloorMapType) => {
     const key = `floorName${lang.charAt(0).toUpperCase() + lang.slice(1)}` as keyof FloorMapType
     return (f as any)[key] || f.floorNameKo
@@ -30,80 +35,111 @@ export default function FloorMap() {
     const key = `description${lang.charAt(0).toUpperCase() + lang.slice(1)}` as keyof FloorMapType
     return (f as any)[key] || f.descriptionKo
   }
+  const getStoreName = (s: Store) => {
+    const key = `name${lang.charAt(0).toUpperCase() + lang.slice(1)}` as keyof Store
+    return (s as any)[key] || s.nameKo
+  }
+
+  const zoneColors: Record<string, string> = {
+    FNB:     'bg-amber-100 text-amber-800',
+    RETAIL:  'bg-forest-100 text-forest-800',
+    AMENITY: 'bg-cream-300 text-cream-900',
+    CULTURE: 'bg-blue-100 text-blue-800',
+    SERVICE: 'bg-gray-100 text-gray-700',
+  }
 
   return (
-    <div className="pt-20">
-      <div className="bg-building-dark py-16 text-center text-white">
-        <p className="text-gold-400 text-xs tracking-[0.4em] uppercase mb-3">{t('floorMap.hero.subtitle')}</p>
-        <h1 className="text-4xl md:text-5xl font-serif">{t('floorMap.hero.title')}</h1>
-        <div className="gold-divider mx-auto" />
-      </div>
+    <div className="bg-cream-100 min-h-screen">
+      <PageHero
+        title={t('floorMap.hero.title')}
+        subtitle={t('floorMap.hero.subtitle')}
+        imageSrc="/images/hero-bg.svg"
+      />
 
-      <div className="max-w-7xl mx-auto px-4 py-16">
-        <div className="flex flex-col lg:flex-row gap-8">
+      <div className="max-w-7xl mx-auto px-6 py-16 md:py-24">
+        <div className="flex flex-col lg:flex-row gap-10">
+
           {/* Floor selector */}
-          <aside className="lg:w-64 shrink-0">
-            <h3 className="text-sm font-medium text-gray-500 uppercase tracking-wider mb-4">{t('floorMap.selectFloor')}</h3>
+          <aside className="lg:w-56 shrink-0">
+            <p className="section-label mb-6">{t('floorMap.selectFloor')}</p>
             <div className="space-y-1">
               {floors.map(floor => (
                 <button
                   key={floor.floorNumber}
                   onClick={() => setSelected(floor.floorNumber === selected ? null : floor.floorNumber)}
-                  className={`w-full flex items-center justify-between px-4 py-3 text-sm transition-all border ${
+                  className={`w-full flex items-center gap-4 px-4 py-3.5 text-left transition-all border-b ${
                     selected === floor.floorNumber
-                      ? 'border-gold-400 bg-gold-50 text-gold-700 font-medium'
-                      : 'border-gray-200 hover:border-gold-200 hover:bg-gray-50 text-gray-700'
+                      ? 'border-forest-600 bg-forest-900 text-cream-200'
+                      : 'border-sand/40 hover:border-forest-400 hover:bg-cream-200 text-forest-800'
                   }`}
                 >
-                  <span className="font-semibold">{floor.floorNumber}</span>
-                  <span className="text-xs">{getFloorName(floor)}</span>
+                  <span className={`text-xs font-sans tracking-widest font-medium w-12 ${
+                    selected === floor.floorNumber ? 'text-cream-400' : 'text-forest-500'
+                  }`}>{floor.floorNumber}</span>
+                  <span className="text-sm font-serif font-light">{getFloorName(floor)}</span>
                 </button>
               ))}
             </div>
           </aside>
 
           {/* Main content */}
-          <main className="flex-1">
+          <main className="flex-1 min-w-0">
             {selectedFloor ? (
               <div className="animate-fade-in">
-                <div className="border border-gray-200 p-6 mb-6 bg-white">
-                  <div className="flex items-start justify-between mb-4">
-                    <div>
-                      <span className="text-3xl font-bold text-gold-600">{selectedFloor.floorNumber}</span>
-                      <h2 className="text-xl font-serif text-gray-900 mt-1">{getFloorName(selectedFloor)}</h2>
+                {/* Header */}
+                <div className="border-b border-sand/60 pb-6 mb-8">
+                  <p className="section-label mb-2">{selectedFloor.floorNumber}</p>
+                  <h2 className="text-3xl font-serif font-light text-forest-900 mb-3">
+                    {getFloorName(selectedFloor)}
+                  </h2>
+                  <p className="text-forest-700/70 font-light">{getDesc(selectedFloor)}</p>
+                </div>
+
+                {/* Floor map image */}
+                <div className="mb-10">
+                  {FLOOR_MAP_IMAGES[selectedFloor.floorNumber] ? (
+                    <div className="border border-sand/60 overflow-hidden">
+                      <img
+                        src={FLOOR_MAP_IMAGES[selectedFloor.floorNumber]}
+                        alt={`${selectedFloor.floorNumber} 약도`}
+                        className="w-full"
+                      />
                     </div>
-                  </div>
-                  <p className="text-gray-600">{getDesc(selectedFloor)}</p>
+                  ) : (
+                    <div className="border border-sand/60 bg-cream-200 h-64 flex items-center justify-center">
+                      <div className="text-center">
+                        <p className="font-serif text-2xl text-forest-700 font-light mb-2">{selectedFloor.floorNumber}</p>
+                        <p className="text-xs text-forest-500 tracking-widest uppercase">Floor Plan</p>
+                      </div>
+                    </div>
+                  )}
                 </div>
 
-                {/* Floor map image placeholder */}
-                <div className="border border-dashed border-gold-300 bg-gold-50 h-64 flex items-center justify-center mb-6 rounded-sm">
-                  <div className="text-center text-gold-600">
-                    <div className="text-4xl mb-2">🗺️</div>
-                    <p className="font-medium">{selectedFloor.floorNumber} 약도</p>
-                    <p className="text-sm text-gold-500 mt-1">Floor Map Image</p>
-                  </div>
-                </div>
-
-                {/* Stores */}
+                {/* Stores list */}
                 {floorStores.length > 0 && (
                   <div>
-                    <h3 className="font-serif text-xl mb-4 text-gray-900">{t('floorMap.stores')}</h3>
-                    <div className="grid sm:grid-cols-2 gap-3">
+                    <p className="section-label mb-6">{t('floorMap.stores')}</p>
+                    <div className="grid sm:grid-cols-2 gap-4">
                       {floorStores.map(store => (
-                        <div key={store.id} className="border border-gray-200 p-4 bg-white card-hover">
-                          <div className="flex items-start justify-between">
-                            <div>
-                              <h4 className="font-medium text-gray-900">{getName(store)}</h4>
-                              <span className={`text-xs px-2 py-0.5 mt-1 inline-block ${
-                                store.zone === 'FNB' ? 'bg-orange-100 text-orange-700' :
-                                store.zone === 'RETAIL' ? 'bg-blue-100 text-blue-700' :
-                                'bg-green-100 text-green-700'
-                              }`}>{t(`zoneGuide.zones.${store.zone}`)}</span>
-                            </div>
+                        <div key={store.id} className="border border-sand/60 p-5 bg-cream-50 hover:border-forest-400 transition-colors duration-300">
+                          <div className="flex items-start justify-between mb-3">
+                            <h4 className="font-serif text-lg font-light text-forest-900">{getStoreName(store)}</h4>
+                            <span className={`text-xs px-2 py-0.5 font-sans tracking-wider ${zoneColors[store.zone] || 'bg-gray-100 text-gray-600'}`}>
+                              {store.zone}
+                            </span>
                           </div>
-                          {store.hours && <p className="text-gray-500 text-xs mt-2">⏰ {store.hours}</p>}
-                          {store.phone && <p className="text-gray-500 text-xs mt-1">📞 {store.phone}</p>}
+                          <div className="space-y-1.5">
+                            {store.hours && (
+                              <p className="flex items-center gap-2 text-xs text-forest-600 font-light">
+                                <Clock size={11} /> {store.hours}
+                              </p>
+                            )}
+                            {store.phone && (
+                              <p className="flex items-center gap-2 text-xs text-forest-600 font-light">
+                                <Phone size={11} /> {store.phone}
+                              </p>
+                            )}
+                          </div>
                         </div>
                       ))}
                     </div>
@@ -111,9 +147,9 @@ export default function FloorMap() {
                 )}
               </div>
             ) : (
-              <div className="text-center py-24 text-gray-400">
-                <div className="text-6xl mb-4">🏢</div>
-                <p className="text-lg">{t('floorMap.selectFloor')}</p>
+              <div className="text-center py-32">
+                <p className="text-5xl font-serif font-light text-forest-300 mb-4">63</p>
+                <p className="text-forest-500 font-light tracking-wider">{t('floorMap.selectFloor')}</p>
               </div>
             )}
           </main>

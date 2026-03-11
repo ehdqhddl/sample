@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 560" width="800" height="560">
+  <rect width="800" height="560" fill="#f2ebe0"/>
+  <!-- Outer building boundary -->
+  <rect x="60" y="40" width="680" height="480" fill="none" stroke="#1a2e17" stroke-width="2.5"/>
+  <!-- Grid lines -->
+  <line x1="60" y1="120" x2="740" y2="120" stroke="#c8bfae" stroke-width="0.5"/>
+  <line x1="60" y1="200" x2="740" y2="200" stroke="#c8bfae" stroke-width="0.5"/>
+  <line x1="60" y1="280" x2="740" y2="280" stroke="#c8bfae" stroke-width="0.5"/>
+  <line x1="60" y1="360" x2="740" y2="360" stroke="#c8bfae" stroke-width="0.5"/>
+  <line x1="60" y1="440" x2="740" y2="440" stroke="#c8bfae" stroke-width="0.5"/>
+  <line x1="200" y1="40" x2="200" y2="520" stroke="#c8bfae" stroke-width="0.5"/>
+  <line x1="340" y1="40" x2="340" y2="520" stroke="#c8bfae" stroke-width="0.5"/>
+  <line x1="480" y1="40" x2="480" y2="520" stroke="#c8bfae" stroke-width="0.5"/>
+  <line x1="620" y1="40" x2="620" y2="520" stroke="#c8bfae" stroke-width="0.5"/>
+
+  <!-- F&B Zone (large area, warm amber) -->
+  <rect x="70" y="50" width="260" height="220" fill="#e8d5b0" stroke="#b8a78b" stroke-width="1.5"/>
+  <text x="200" y="140" text-anchor="middle" font-family="Georgia,serif" font-size="14" fill="#5a5238" font-weight="300">F&amp;B Zone</text>
+  <text x="200" y="160" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#9a8a6d">씨푸드 뷔페 · 푸드코트</text>
+
+  <!-- Seafood Buffet -->
+  <rect x="80" y="60" width="240" height="100" fill="#d4c49a" stroke="#9a8a6d" stroke-width="1"/>
+  <text x="200" y="108" text-anchor="middle" font-family="Georgia,serif" font-size="12" fill="#3d5c35" font-weight="400">63 씨푸드뷔페</text>
+  <text x="200" y="124" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#7a6e52">11:30 – 21:00</text>
+
+  <!-- Food Court -->
+  <rect x="80" y="170" width="240" height="90" fill="#ddd1be" stroke="#9a8a6d" stroke-width="1"/>
+  <text x="200" y="218" text-anchor="middle" font-family="Georgia,serif" font-size="12" fill="#3d5c35">푸드코트</text>
+
+  <!-- Cafe -->
+  <rect x="340" y="50" width="130" height="130" fill="#dce8d6" stroke="#6a8b5d" stroke-width="1.5"/>
+  <text x="405" y="115" text-anchor="middle" font-family="Georgia,serif" font-size="12" fill="#263e22">카페 63</text>
+  <text x="405" y="132" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#4e6b42">08:00 – 22:00</text>
+
+  <!-- Convenience Store -->
+  <rect x="480" y="50" width="130" height="130" fill="#f0f5ee" stroke="#6a8b5d" stroke-width="1.5"/>
+  <text x="545" y="108" text-anchor="middle" font-family="Georgia,serif" font-size="12" fill="#263e22">세븐일레븐</text>
+  <text x="545" y="124" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#4e6b42">24시간</text>
+
+  <!-- Pharmacy -->
+  <rect x="620" y="50" width="110" height="130" fill="#f0f5ee" stroke="#6a8b5d" stroke-width="1.5"/>
+  <text x="675" y="108" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#263e22">약국</text>
+  <text x="675" y="124" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#4e6b42">10:00 – 20:00</text>
+
+  <!-- Parking (large lower area) -->
+  <rect x="70" y="285" width="660" height="225" fill="#e8dfd2" stroke="#b8a78b" stroke-width="1.5"/>
+  <text x="400" y="390" text-anchor="middle" font-family="Georgia,serif" font-size="16" fill="#5a5238" font-weight="300">주차장</text>
+  <text x="400" y="415" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#9a8a6d">Parking · 300대 수용</text>
+  <!-- Parking arrows -->
+  <text x="200" y="450" text-anchor="middle" font-size="20" fill="#b8a78b">↑</text>
+  <text x="400" y="450" text-anchor="middle" font-size="20" fill="#b8a78b">↑</text>
+  <text x="600" y="450" text-anchor="middle" font-size="20" fill="#b8a78b">↑</text>
+  <text x="200" y="470" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#b8a78b">입구</text>
+  <text x="400" y="470" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#b8a78b">통로</text>
+  <text x="600" y="470" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#b8a78b">출구</text>
+
+  <!-- Elevator core center -->
+  <rect x="340" y="200" width="120" height="80" fill="#c8bfae" stroke="#9a8a6d" stroke-width="1.5"/>
+  <text x="400" y="238" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#3d5c35">엘리베이터</text>
+  <text x="400" y="254" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#5a5238">· 계단</text>
+
+  <!-- Floor label -->
+  <rect x="60" y="40" width="80" height="28" fill="#1a2e17"/>
+  <text x="100" y="59" text-anchor="middle" font-family="Georgia,serif" font-size="13" fill="#f2ebe0" font-weight="300">B1F</text>
+
+  <!-- Legend -->
+  <rect x="60" y="525" width="12" height="10" fill="#e8d5b0" stroke="#b8a78b" stroke-width="1"/>
+  <text x="78" y="535" font-family="Georgia,serif" font-size="10" fill="#5a5238">F&amp;B</text>
+  <rect x="130" y="525" width="12" height="10" fill="#dce8d6" stroke="#6a8b5d" stroke-width="1"/>
+  <text x="148" y="535" font-family="Georgia,serif" font-size="10" fill="#5a5238">편의시설</text>
+  <rect x="230" y="525" width="12" height="10" fill="#e8dfd2" stroke="#b8a78b" stroke-width="1"/>
+  <text x="248" y="535" font-family="Georgia,serif" font-size="10" fill="#5a5238">주차장</text>
+</svg>

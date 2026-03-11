@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 560" width="800" height="560">
+  <rect width="800" height="560" fill="#f2ebe0"/>
+  <rect x="60" y="40" width="680" height="480" fill="none" stroke="#1a2e17" stroke-width="2.5"/>
+  <!-- Grid -->
+  <line x1="60" y1="180" x2="740" y2="180" stroke="#c8bfae" stroke-width="0.5"/>
+  <line x1="60" y1="320" x2="740" y2="320" stroke="#c8bfae" stroke-width="0.5"/>
+  <line x1="60" y1="440" x2="740" y2="440" stroke="#c8bfae" stroke-width="0.5"/>
+  <line x1="240" y1="40" x2="240" y2="520" stroke="#c8bfae" stroke-width="0.5"/>
+  <line x1="420" y1="40" x2="420" y2="520" stroke="#c8bfae" stroke-width="0.5"/>
+  <line x1="600" y1="40" x2="600" y2="520" stroke="#c8bfae" stroke-width="0.5"/>
+
+  <!-- Main Entrance / Lobby -->
+  <rect x="70" y="280" width="480" height="150" fill="#dce8d6" stroke="#6a8b5d" stroke-width="2"/>
+  <text x="310" y="355" text-anchor="middle" font-family="Georgia,serif" font-size="16" fill="#1a2e17" font-weight="300">메인 로비</text>
+  <text x="310" y="378" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#4e6b42">Main Lobby · Information Desk</text>
+  <!-- Entrance arrows -->
+  <line x1="310" y1="430" x2="310" y2="500" stroke="#6a8b5d" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="310" y="518" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#3d5c35">정문 입구</text>
+
+  <!-- Cafe 63 -->
+  <rect x="70" y="50" width="160" height="220" fill="#d4c49a" stroke="#9a8a6d" stroke-width="1.5"/>
+  <text x="150" y="155" text-anchor="middle" font-family="Georgia,serif" font-size="12" fill="#3d5c35">카페 63</text>
+  <text x="150" y="172" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#7a6e52">08:00 – 22:00</text>
+
+  <!-- Info / Ticket desk -->
+  <rect x="240" y="50" width="170" height="220" fill="#f0f5ee" stroke="#6a8b5d" stroke-width="1.5"/>
+  <text x="325" y="148" text-anchor="middle" font-family="Georgia,serif" font-size="12" fill="#263e22">안내 데스크</text>
+  <text x="325" y="165" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#4e6b42">Information</text>
+
+  <!-- Retail A -->
+  <rect x="420" y="50" width="170" height="100" fill="#e8dfd2" stroke="#b8a78b" stroke-width="1.5"/>
+  <text x="505" y="103" text-anchor="middle" font-family="Georgia,serif" font-size="12" fill="#5a5238">리테일 A</text>
+
+  <!-- Retail B -->
+  <rect x="420" y="160" width="170" height="110" fill="#e8dfd2" stroke="#b8a78b" stroke-width="1.5"/>
+  <text x="505" y="218" text-anchor="middle" font-family="Georgia,serif" font-size="12" fill="#5a5238">리테일 B</text>
+
+  <!-- Elevator core -->
+  <rect x="600" y="50" width="130" height="220" fill="#c8bfae" stroke="#9a8a6d" stroke-width="1.5"/>
+  <text x="665" y="155" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#3d5c35">엘리베이터</text>
+  <text x="665" y="172" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#5a5238">· 에스컬레이터</text>
+  <text x="665" y="188" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#5a5238">· 계단</text>
+
+  <!-- Restroom -->
+  <rect x="560" y="280" width="170" height="150" fill="#f0f5ee" stroke="#6a8b5d" stroke-width="1"/>
+  <text x="645" y="358" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#4e6b42">화장실</text>
+  <text x="645" y="374" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#6a8b5d">Restroom</text>
+
+  <!-- Floor label -->
+  <rect x="60" y="40" width="80" height="28" fill="#1a2e17"/>
+  <text x="100" y="59" text-anchor="middle" font-family="Georgia,serif" font-size="13" fill="#f2ebe0" font-weight="300">GF</text>
+
+  <!-- Legend -->
+  <rect x="60" y="525" width="12" height="10" fill="#dce8d6" stroke="#6a8b5d" stroke-width="1"/>
+  <text x="78" y="535" font-family="Georgia,serif" font-size="10" fill="#5a5238">공용공간</text>
+  <rect x="160" y="525" width="12" height="10" fill="#d4c49a" stroke="#9a8a6d" stroke-width="1"/>
+  <text x="178" y="535" font-family="Georgia,serif" font-size="10" fill="#5a5238">F&amp;B</text>
+  <rect x="220" y="525" width="12" height="10" fill="#e8dfd2" stroke="#b8a78b" stroke-width="1"/>
+  <text x="238" y="535" font-family="Georgia,serif" font-size="10" fill="#5a5238">리테일</text>
+  <rect x="295" y="525" width="12" height="10" fill="#c8bfae" stroke="#9a8a6d" stroke-width="1"/>
+  <text x="313" y="535" font-family="Georgia,serif" font-size="10" fill="#5a5238">코어</text>
+</svg>

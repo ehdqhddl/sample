@@ -28,40 +28,53 @@ export default function Header() {
   const isHome = location.pathname === '/'
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 50)
-    window.addEventListener('scroll', onScroll)
+    const onScroll = () => setScrolled(window.scrollY > 60)
+    window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
   useEffect(() => { setMenuOpen(false) }, [location])
 
-  const headerClass = isHome && !scrolled
-    ? 'bg-transparent'
-    : 'bg-building-dark/95 backdrop-blur-sm shadow-md'
+  const isTransparent = isHome && !scrolled
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${headerClass}`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        isTransparent
+          ? 'bg-transparent'
+          : 'bg-forest-950/95 backdrop-blur-sm'
+      }`}
+    >
+      <div className="max-w-7xl mx-auto px-6">
         <div className="flex items-center justify-between h-16 md:h-20">
+
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2">
-            <div className="w-9 h-9 bg-gold-500 flex items-center justify-center">
-              <span className="text-white font-bold text-sm">63</span>
+          <Link to="/" className="flex items-center gap-3 group">
+            <div className={`w-8 h-8 flex items-center justify-center border transition-colors duration-300 ${
+              isTransparent ? 'border-cream-400/60 group-hover:border-cream-200' : 'border-cream-600/40 group-hover:border-cream-400'
+            }`}>
+              <span className="text-cream-200 font-serif font-light text-sm">63</span>
             </div>
-            <span className="text-white font-serif font-semibold text-lg tracking-wider hidden sm:block">
+            <span className={`font-serif font-light tracking-[0.2em] text-sm hidden sm:block transition-colors duration-300 ${
+              isTransparent ? 'text-cream-200' : 'text-cream-300'
+            }`}>
               BUILDING
             </span>
           </Link>
 
           {/* Desktop Nav */}
-          <nav className="hidden lg:flex items-center gap-6">
+          <nav className="hidden lg:flex items-center gap-8">
             {NAV_ITEMS.map(item => (
               <NavLink
                 key={item.key}
                 to={item.path}
                 className={({ isActive }) =>
-                  `text-sm font-medium transition-colors ${
-                    isActive ? 'text-gold-400' : 'text-white/80 hover:text-white'
+                  `text-xs tracking-widest uppercase font-sans transition-colors duration-200 ${
+                    isActive
+                      ? 'text-cream-200'
+                      : isTransparent
+                        ? 'text-cream-400 hover:text-cream-200'
+                        : 'text-cream-500 hover:text-cream-200'
                   }`
                 }
               >
@@ -70,19 +83,25 @@ export default function Header() {
             ))}
 
             {/* Facilities dropdown */}
-            <div className="relative" onMouseEnter={() => setFacilityOpen(true)} onMouseLeave={() => setFacilityOpen(false)}>
-              <button className="flex items-center gap-1 text-sm font-medium text-white/80 hover:text-white transition-colors">
-                시설 안내 <ChevronDown size={14} />
+            <div
+              className="relative"
+              onMouseEnter={() => setFacilityOpen(true)}
+              onMouseLeave={() => setFacilityOpen(false)}
+            >
+              <button className={`flex items-center gap-1.5 text-xs tracking-widest uppercase font-sans transition-colors duration-200 ${
+                isTransparent ? 'text-cream-400 hover:text-cream-200' : 'text-cream-500 hover:text-cream-200'
+              }`}>
+                시설 안내 <ChevronDown size={12} strokeWidth={1.5} />
               </button>
               {facilityOpen && (
-                <div className="absolute top-full left-0 mt-1 bg-white shadow-xl border border-gray-100 min-w-[160px] animate-slide-down">
+                <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 bg-forest-950/98 border border-forest-800 min-w-[160px] animate-slide-down">
                   {FACILITY_ITEMS.map(item => (
                     <NavLink
                       key={item.key}
                       to={item.path}
                       className={({ isActive }) =>
-                        `block px-5 py-3 text-sm transition-colors ${
-                          isActive ? 'text-gold-600 bg-gold-50' : 'text-gray-700 hover:bg-gray-50 hover:text-gold-600'
+                        `block px-5 py-3 text-xs tracking-widest uppercase font-sans transition-colors ${
+                          isActive ? 'text-cream-200 bg-forest-800' : 'text-cream-500 hover:text-cream-200 hover:bg-forest-900'
                         }`
                       }
                     >
@@ -96,7 +115,13 @@ export default function Header() {
             <NavLink
               to="/news"
               className={({ isActive }) =>
-                `text-sm font-medium transition-colors ${isActive ? 'text-gold-400' : 'text-white/80 hover:text-white'}`
+                `text-xs tracking-widest uppercase font-sans transition-colors duration-200 ${
+                  isActive
+                    ? 'text-cream-200'
+                    : isTransparent
+                      ? 'text-cream-400 hover:text-cream-200'
+                      : 'text-cream-500 hover:text-cream-200'
+                }`
               }
             >
               {t('nav.news')}
@@ -105,8 +130,11 @@ export default function Header() {
 
           <div className="flex items-center gap-4">
             <LanguageSwitcher />
-            <button className="lg:hidden text-white p-1" onClick={() => setMenuOpen(!menuOpen)}>
-              {menuOpen ? <X size={22} /> : <Menu size={22} />}
+            <button
+              className={`lg:hidden p-1 transition-colors ${isTransparent ? 'text-cream-300' : 'text-cream-400'}`}
+              onClick={() => setMenuOpen(!menuOpen)}
+            >
+              {menuOpen ? <X size={20} strokeWidth={1.5} /> : <Menu size={20} strokeWidth={1.5} />}
             </button>
           </div>
         </div>
@@ -114,15 +142,15 @@ export default function Header() {
 
       {/* Mobile Menu */}
       {menuOpen && (
-        <div className="lg:hidden bg-building-dark border-t border-white/10 animate-slide-down">
-          <nav className="px-4 py-4 space-y-1">
+        <div className="lg:hidden bg-forest-950/98 border-t border-forest-800 animate-slide-down">
+          <nav className="px-6 py-6 space-y-1">
             {[...NAV_ITEMS, ...FACILITY_ITEMS, { key: 'news', path: '/news' }].map(item => (
               <NavLink
                 key={item.key}
                 to={item.path}
                 className={({ isActive }) =>
-                  `block px-3 py-2.5 text-sm rounded transition-colors ${
-                    isActive ? 'text-gold-400 bg-white/5' : 'text-white/80 hover:text-white hover:bg-white/5'
+                  `block px-0 py-3 text-xs tracking-widest uppercase font-sans border-b border-forest-800 transition-colors ${
+                    isActive ? 'text-cream-200' : 'text-cream-500 hover:text-cream-200'
                   }`
                 }
               >

@@ -1,134 +1,329 @@
-import { useTranslation } from 'react-i18next'
+import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { ChevronDown, ExternalLink } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
+import { ArrowRight, ChevronDown } from 'lucide-react'
 import { useQuery } from '@tanstack/react-query'
 import { publicApi } from '../api'
 
+function useParallax(factor = 0.35) {
+  const [offset, setOffset] = useState(0)
+  useEffect(() => {
+    const onScroll = () => setOffset(window.scrollY * factor)
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [factor])
+  return offset
+}
+
+function useIntersection(threshold = 0.15) {
+  const ref = useRef<HTMLDivElement>(null)
+  const [visible, setVisible] = useState(false)
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) setVisible(true) },
+      { threshold }
+    )
+    if (ref.current) observer.observe(ref.current)
+    return () => observer.disconnect()
+  }, [threshold])
+  return { ref, visible }
+}
+
+const facilities = [
+  {
+    key: 'observatory',
+    path: '/observatory',
+    label: '60F',
+    titleKo: '전망대',
+    titleEn: 'Observatory',
+    descKo: '서울 360° 파노라마',
+    bg: 'from-slate-900 via-blue-950 to-slate-800',
+  },
+  {
+    key: 'pompidou',
+    path: '/pompidou',
+    label: '2–3F',
+    titleKo: '퐁피두 센터',
+    titleEn: 'Centre Pompidou',
+    descKo: '현대미술의 새로운 지평',
+    bg: 'from-stone-900 via-red-950 to-stone-800',
+  },
+  {
+    key: 'buffet',
+    path: '/buffet',
+    label: 'B1F',
+    titleKo: '시그니처 뷔페',
+    titleEn: 'Signature Buffet',
+    descKo: '신선한 해산물과 프리미엄 다이닝',
+    bg: 'from-amber-950 via-stone-900 to-amber-900',
+  },
+  {
+    key: 'restaurant',
+    path: '/restaurant',
+    label: '57–59F',
+    titleKo: '스카이 레스토랑',
+    titleEn: 'Sky Restaurant',
+    descKo: '한강이 내려다보이는 파인다이닝',
+    bg: 'from-forest-950 via-forest-900 to-forest-800',
+  },
+]
+
 export default function Home() {
   const { t } = useTranslation()
+  const heroOffset = useParallax(0.35)
+  const intro = useIntersection()
+  const facilityRef = useIntersection(0.1)
+  const newsRef = useIntersection()
+  const storyRef = useIntersection()
+
   const { data: newsRes } = useQuery({
     queryKey: ['news'],
     queryFn: () => publicApi.getNews(),
   })
   const news = newsRes?.data?.data?.slice(0, 3) || []
 
-  const highlights = [
-    { key: 'observatory', path: '/observatory', color: 'from-blue-900 to-blue-700', icon: '🔭' },
-    { key: 'pompidou', path: '/pompidou', color: 'from-red-900 to-red-700', icon: '🎨' },
-    { key: 'buffet', path: '/buffet', color: 'from-amber-900 to-amber-700', icon: '🍽️' },
-    { key: 'restaurant', path: '/restaurant', color: 'from-gray-900 to-gray-700', icon: '✨' },
-  ]
-
   return (
-    <div>
-      {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0">
-          <img src="/images/hero-bg.svg" alt="63 Building" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-black/30" />
+    <div className="bg-cream-100">
+
+      {/* ── Hero (Parallax) ── */}
+      <section className="relative h-screen min-h-[600px] overflow-hidden flex items-center justify-center">
+        <div
+          className="absolute inset-0 parallax-bg"
+          style={{ transform: `translateY(${heroOffset}px)` }}
+        >
+          <img
+            src="/images/hero-bg.svg"
+            alt="63 Building"
+            className="w-full h-[120%] object-cover"
+            style={{ marginTop: '-10%' }}
+          />
+          <div className="absolute inset-0 bg-forest-950/60" />
         </div>
-        <div className="relative z-10 text-center text-white px-4 animate-fade-in">
-          <p className="text-gold-400 text-xs sm:text-sm font-medium tracking-[0.4em] uppercase mb-4">
-            {t('home.hero.tagline')}
+
+        <div className="relative z-10 text-center px-6 animate-fade-in">
+          <p className="section-label-light tracking-ultra mb-6">
+            Seoul · Han River · Since 1985
           </p>
-          <h1 className="text-5xl sm:text-7xl md:text-8xl font-serif font-semibold tracking-wider mb-6"
-              style={{ background: 'linear-gradient(135deg, #C9A84C 0%, #F5D170 50%, #C9A84C 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
-            {t('home.hero.title')}
+          <h1 className="text-7xl sm:text-8xl md:text-[10rem] font-serif font-light text-cream-100 leading-none tracking-tight mb-6">
+            63
           </h1>
-          <p className="text-lg sm:text-xl text-white/80 mb-10 font-light">{t('home.hero.subtitle')}</p>
-          <Link to="/story" className="btn-primary text-base px-8 py-4">
+          <p className="text-xl sm:text-2xl font-serif font-light text-cream-300 tracking-wider mb-2">
+            BUILDING
+          </p>
+          <div className="divider-cream mx-auto" />
+          <p className="text-base text-cream-400 font-sans font-light tracking-wider mb-10">
+            {t('home.hero.subtitle')}
+          </p>
+          <Link to="/story" className="btn-outline-light">
             {t('home.hero.cta')}
           </Link>
         </div>
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/60 animate-bounce">
-          <ChevronDown size={28} />
+
+        <a
+          href="#intro"
+          className="absolute bottom-10 left-1/2 -translate-x-1/2 text-cream-400 hover:text-cream-200 transition-colors animate-bounce"
+        >
+          <ChevronDown size={24} strokeWidth={1.5} />
+        </a>
+      </section>
+
+      {/* ── Intro Statement ── */}
+      <section id="intro" className="py-28 md:py-40 bg-cream-100">
+        <div
+          ref={intro.ref}
+          className={`max-w-3xl mx-auto px-6 text-center transition-all duration-1000 ${
+            intro.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+          }`}
+        >
+          <p className="section-label mb-8">The New Beginning</p>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif font-light text-forest-900 leading-relaxed mb-8">
+            {t('home.intro.title')}
+          </h2>
+          <div className="divider-forest mx-auto" />
+          <p className="text-forest-700/80 leading-loose text-lg font-light mt-8">
+            {t('home.intro.desc')}
+          </p>
         </div>
       </section>
 
-      {/* Intro */}
-      <section className="py-20 md:py-28 bg-building-light">
-        <div className="max-w-3xl mx-auto px-4 text-center">
-          <div className="gold-divider" />
-          <h2 className="section-title">{t('home.intro.title')}</h2>
-          <p className="text-gray-600 leading-relaxed text-lg">{t('home.intro.desc')}</p>
+      {/* ── Story Parallax Strip ── */}
+      <section className="relative h-[50vh] md:h-[60vh] overflow-hidden flex items-center justify-center">
+        <div
+          className="absolute inset-0 parallax-bg"
+          style={{ transform: `translateY(${heroOffset * 0.5}px)` }}
+        >
+          <img
+            src="/images/story.svg"
+            alt="63 Building Story"
+            className="w-full h-[120%] object-cover"
+            style={{ marginTop: '-10%' }}
+          />
+          <div className="absolute inset-0 bg-forest-900/70" />
         </div>
-      </section>
-
-      {/* Highlights */}
-      <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
-        {highlights.map(item => (
-          <Link key={item.key} to={item.path}
-            className={`group relative h-64 md:h-80 flex items-end p-6 bg-gradient-to-t ${item.color} overflow-hidden card-hover`}>
-            <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors" />
-            <div className="relative z-10 text-white">
-              <div className="text-4xl mb-2">{item.icon}</div>
-              <h3 className="text-xl font-serif font-semibold mb-1">{t(`home.highlights.${item.key}.title`)}</h3>
-              <p className="text-white/70 text-sm flex items-center gap-1">
-                {t(`home.highlights.${item.key}.desc`)}
-                <ExternalLink size={12} />
-              </p>
-            </div>
+        <div
+          ref={storyRef.ref}
+          className={`relative z-10 text-center px-6 transition-all duration-1000 ${
+            storyRef.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+          }`}
+        >
+          <p className="section-label-light mb-4">Since 1985</p>
+          <h2 className="text-4xl md:text-6xl font-serif font-light text-cream-100 mb-6">
+            63빌딩의 이야기
+          </h2>
+          <Link to="/story" className="btn-outline-light">
+            스토리 보기 <ArrowRight size={14} />
           </Link>
-        ))}
+        </div>
       </section>
 
-      {/* Zone Guide Preview */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-12">
-            <div className="gold-divider" />
-            <h2 className="section-title">{t('nav.floorMap')}</h2>
-            <p className="section-subtitle">{t('floorMap.hero.subtitle')}</p>
+      {/* ── Facilities Grid ── */}
+      <section className="bg-forest-900 py-24 md:py-32">
+        <div
+          ref={facilityRef.ref}
+          className={`max-w-7xl mx-auto px-6 transition-all duration-1000 ${
+            facilityRef.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+          }`}
+        >
+          <div className="text-center mb-16">
+            <p className="section-label-light mb-4">Facilities</p>
+            <h2 className="section-title-light">공간을 경험하다</h2>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
-            {['B1', 'GF', '1-10F', '11-56F', '57-59F', '60F'].map((floor, i) => (
-              <Link key={floor} to="/floor-map"
-                className="group flex flex-col items-center justify-center p-4 border border-gray-200 hover:border-gold-400 hover:bg-gold-50 transition-all">
-                <div className="w-10 h-10 rounded-full bg-gold-100 group-hover:bg-gold-200 flex items-center justify-center mb-2 transition-colors">
-                  <span className="text-gold-700 font-bold text-xs">{floor}</span>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-forest-700">
+            {facilities.map((item) => (
+              <Link
+                key={item.key}
+                to={item.path}
+                className={`group relative flex flex-col justify-end p-8 h-72 md:h-96 bg-gradient-to-b ${item.bg} overflow-hidden`}
+              >
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-forest-800/40" />
+                <div className="relative z-10">
+                  <span className="text-xs tracking-widest text-cream-500 font-sans mb-3 block">{item.label}</span>
+                  <h3 className="text-2xl font-serif font-light text-cream-100 mb-1">{item.titleKo}</h3>
+                  <p className="text-sm font-sans font-light text-cream-400 mb-4">{item.titleEn}</p>
+                  <p className="text-xs text-cream-500 leading-relaxed mb-4">{item.descKo}</p>
+                  <span className="inline-flex items-center gap-2 text-xs tracking-widest text-cream-300 uppercase group-hover:gap-3 transition-all duration-300">
+                    자세히 보기 <ArrowRight size={12} />
+                  </span>
                 </div>
-                <span className="text-gray-600 text-xs text-center group-hover:text-gold-700 transition-colors">
-                  {['지하 1층', '지상층', '1~10층', '11~56층', '57~59층', '60층'][i]}
-                </span>
               </Link>
             ))}
           </div>
-          <div className="text-center mt-8">
-            <Link to="/floor-map" className="btn-outline">{t('common.more')}</Link>
+        </div>
+      </section>
+
+      {/* ── Floor Map Preview ── */}
+      <section className="py-24 md:py-32 bg-cream-200">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="grid md:grid-cols-2 gap-16 items-center">
+            <div>
+              <p className="section-label mb-4">Floor Guide</p>
+              <h2 className="section-title mb-6">층별 안내</h2>
+              <div className="divider-forest" />
+              <p className="text-forest-700/80 font-light leading-relaxed mb-8">
+                {t('floorMap.hero.subtitle')}
+              </p>
+              <Link to="/floor-map" className="btn-primary">
+                층별 안내 보기 <ArrowRight size={14} />
+              </Link>
+            </div>
+            <div className="space-y-2">
+              {[
+                { floor: '60F', label: '전망대', sub: 'Observatory · 360° View' },
+                { floor: '57–59F', label: '레스토랑', sub: 'Fine Dining' },
+                { floor: '11–56F', label: '오피스', sub: 'Office & Corporate' },
+                { floor: '1–10F', label: '리테일', sub: 'Shopping & Retail' },
+                { floor: 'GF', label: '메인 입구', sub: 'Main Entrance & Café' },
+                { floor: 'B1', label: 'F&B존', sub: 'Food & Beverage' },
+              ].map((item) => (
+                <Link
+                  key={item.floor}
+                  to="/floor-map"
+                  className="group flex items-center gap-4 p-4 border border-sand/60 hover:border-forest-500 hover:bg-cream-100 transition-all duration-300"
+                >
+                  <div className="w-14 h-14 bg-forest-900 flex items-center justify-center shrink-0">
+                    <span className="text-cream-300 text-xs font-sans tracking-wider">{item.floor}</span>
+                  </div>
+                  <div className="flex-1">
+                    <p className="text-forest-900 font-serif text-lg font-light">{item.label}</p>
+                    <p className="text-forest-600/70 text-xs font-sans tracking-wider">{item.sub}</p>
+                  </div>
+                  <ArrowRight size={14} className="text-forest-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
-      {/* News */}
+      {/* ── News Section ── */}
       {news.length > 0 && (
-        <section className="py-20 bg-building-light">
-          <div className="max-w-7xl mx-auto px-4">
-            <div className="flex items-center justify-between mb-10">
+        <section className="py-24 md:py-32 bg-forest-950">
+          <div
+            ref={newsRef.ref}
+            className={`max-w-6xl mx-auto px-6 transition-all duration-1000 ${
+              newsRef.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            }`}
+          >
+            <div className="flex items-end justify-between mb-16">
               <div>
-                <div className="w-10 h-0.5 bg-gold-500 mb-3" />
-                <h2 className="section-title mb-0">{t('home.news.title')}</h2>
+                <p className="section-label-light mb-4">News & Notice</p>
+                <h2 className="section-title-light">{t('home.news.title')}</h2>
               </div>
-              <Link to="/news" className="text-gold-600 text-sm font-medium hover:text-gold-800 flex items-center gap-1">
-                {t('home.news.more')} →
+              <Link to="/news" className="text-cream-500 text-xs tracking-widest uppercase hover:text-cream-300 transition-colors flex items-center gap-2">
+                {t('home.news.more')} <ArrowRight size={12} />
               </Link>
             </div>
-            <div className="grid md:grid-cols-3 gap-6">
+            <div className="grid md:grid-cols-3 gap-8">
               {news.map((item: any) => (
-                <article key={item.id} className="bg-white p-6 border border-gray-100 card-hover">
-                  <span className={`inline-block text-xs font-medium px-2 py-1 mb-3 ${
-                    item.newsType === 'NOTICE' ? 'bg-blue-100 text-blue-700' : 'bg-gold-100 text-gold-700'
+                <article key={item.id} className="border-t border-forest-700 pt-6 group cursor-pointer">
+                  <span className={`inline-block text-xs tracking-widest uppercase mb-4 px-2 py-1 ${
+                    item.newsType === 'NOTICE'
+                      ? 'bg-forest-800 text-cream-400'
+                      : 'bg-forest-600/40 text-forest-300'
                   }`}>
                     {item.newsType === 'NOTICE' ? t('news.notice') : t('news.news')}
                   </span>
-                  <h3 className="font-semibold text-gray-900 mb-2 line-clamp-2">{item.titleKo}</h3>
-                  <p className="text-gray-500 text-sm line-clamp-3">{item.contentKo}</p>
-                  <p className="text-gray-400 text-xs mt-3">{new Date(item.createdAt).toLocaleDateString('ko-KR')}</p>
+                  <h3 className="font-serif text-xl font-light text-cream-200 mb-3 leading-snug line-clamp-2 group-hover:text-cream-100 transition-colors">
+                    {item.titleKo}
+                  </h3>
+                  <p className="text-cream-600 text-sm font-light leading-relaxed line-clamp-2 mb-4">
+                    {item.contentKo}
+                  </p>
+                  <p className="text-forest-600 text-xs tracking-wider font-sans">
+                    {new Date(item.createdAt).toLocaleDateString('ko-KR')}
+                  </p>
                 </article>
               ))}
             </div>
           </div>
         </section>
       )}
+
+      {/* ── GF Concept Strip ── */}
+      <section className="relative h-[40vh] md:h-[50vh] overflow-hidden flex items-center justify-center">
+        <div
+          className="absolute inset-0 parallax-bg"
+          style={{ transform: `translateY(${heroOffset * 0.3}px)` }}
+        >
+          <img
+            src="/images/gf-concept.svg"
+            alt="GF Design Concept"
+            className="w-full h-[120%] object-cover"
+            style={{ marginTop: '-10%' }}
+          />
+          <div className="absolute inset-0 bg-forest-900/65" />
+        </div>
+        <div className="relative z-10 text-center px-6">
+          <p className="section-label-light mb-4">Ground Floor</p>
+          <h2 className="text-3xl md:text-5xl font-serif font-light text-cream-100 mb-6">
+            GF 디자인 컨셉
+          </h2>
+          <Link to="/gf-concept" className="btn-outline-light">
+            더 알아보기 <ArrowRight size={14} />
+          </Link>
+        </div>
+      </section>
+
     </div>
   )
 }

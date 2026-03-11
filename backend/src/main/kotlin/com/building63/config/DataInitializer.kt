@@ -14,7 +14,8 @@ class DataInitializer(
 ) : ApplicationRunner {
 
     override fun run(args: ApplicationArguments) {
-        if (adminUserRepository.findByUsername("admin") == null) {
+        val existing = adminUserRepository.findByUsername("admin")
+        if (existing == null) {
             adminUserRepository.save(
                 AdminUser(
                     username = "admin",
@@ -22,6 +23,9 @@ class DataInitializer(
                     role = "ADMIN"
                 )
             )
+        } else {
+            // Always sync password so login works after re-deployment
+            adminUserRepository.save(existing.copy(password = passwordEncoder.encode("admin1234")))
         }
     }
 }
